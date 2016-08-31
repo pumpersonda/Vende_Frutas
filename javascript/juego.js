@@ -32,15 +32,16 @@ var materia;
 var cartas = [];
 
 function pedirDatos(materia) {
-    $.get("../core/php/ParejasJuegoDispatcher.php", {idmateria: materia}).done(function (data) {
+    $.get("../core/php/DataManager.php").done(function (data) {
         if (!data) {
             //No hay datos
             salirJuego();
         }
 
         var datos = $.parseJSON(data);
+        console.log(data);
 
-        if (datos.length < 9) {
+        if (datos.length < 6) {
             //datos incompletos
             salirJuego();
         }
@@ -51,7 +52,7 @@ function pedirDatos(materia) {
 
 
 function procesarDatos(datos) {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 6; i++) {
         crearCartas(datos[i].concepto, datos[i].descripcion, i);
     }
 }
@@ -312,7 +313,7 @@ function enviarDatosPuntaje() {
         idMateria: materia,
         dificultad: dificultad,
         puntaje: puntaje,
-        parejasEncontradas: 9 - cartas.length / 2
+        parejasEncontradas: 6 - cartas.length / 2
     }).done(function (data) {
 
     });
