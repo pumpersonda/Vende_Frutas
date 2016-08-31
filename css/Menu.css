@@ -1,0 +1,113 @@
+.container-fluid{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    width: 27em;
+}
+a{
+    color: #fafbfd;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+
+
+}
+
+@media(min-width:768px) {
+
+    header .container {
+        padding-top: 110px;
+        padding-bottom: 10px;
+
+    }
+
+}
+
+
+.center-block{
+    width: 800px;
+    height: 300px;
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.btn-primary {
+    background-color: #78a4ff;
+    border-color: transparent;
+    padding-bottom: 10px;
+}
+
+nav.navbar{
+
+    background-color: #78a4ff;
+    letter-spacing: 1px;
+}
+.navbar .navbar-nav li a:hover {
+    background-color: transparent;
+    color: #4960ff;
+}
+.navbar .navbar-nav li a:focus {
+    background-color: transparent;
+    color: #281e94;
+}
+header .container {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 20px;
+    height: 35%;
+    width: 35%;
+}
+
+header .intro-text .name {
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 4em;
+    font-weight: 700;
+}
+
+.navbar-fixed-top {
+    padding: 10px;
+
+}
+#divStatus{
+    margin-top: 100px;
+    margin-right: 10px;
+    height: 60px;
+}
+#addForm{
+    border-radius: 100%;
+    position:fixed;
+    bottom:60px;
+    right:50px;
+
+}
+
+#downloadResults{
+    border-radius: 100%;
+    position:fixed;
+    top: 100px;
+    right:50px;
+}
+#fileForm {
+    height: 70px;
+    width: 800px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 20.5%;
+}
+#options{
+    text-align: center;
+    margin-left: 45%;
+}
+
+
+
+

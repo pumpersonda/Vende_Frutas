@@ -1,0 +1,27 @@
+@font-face {
+	font-family: oswaldBold;
+	src: url('../resources/fonts/Oswald-Bold.ttf');
+}
+@font-face {
+	font-family: oswaldLight;
+	src: url('../resources/fonts/Oswald-Light.ttf');
+}
+@font-face {
+	font-family: oswaldRegular;
+	src: url('../resources/fonts/Oswald-Regular.ttf');
+}
+
+body{
+	font-family: oswaldRegular, sans-serif;
+	background-color: white;
+	text-align: center;
+	color: black;
+}
+
+.center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 27em;
+}
+

@@ -1,0 +1,171 @@
+/*
+Copyright (C) 2016 Eduardo
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+/* 
+    Created on : 9/04/2016, 11:39:58 AM
+    Author     : Eduardo
+*/
+
+@font-face{
+    font-family: Raleway;
+    src: url(../resources/fonts/Raleway-Medium.ttf);
+}
+
+body{
+    font-family: Raleway;
+    background: #455A64;
+}
+
+@media screen and (min-width: 1300px){
+    p{
+        font-size: 1em;
+    }
+}
+
+
+@media screen and (min-device-width: 700px) and (max-device-width: 1000px){
+    p{
+        font-size: .5em;
+    }
+}
+
+.padding-juego {
+    padding: 0px;
+    margin: 10px;
+}
+
+.tablero-color{
+    background: #CFD8DC;
+    margin-bottom: 10px;
+    border: solid 5px #607D8B;
+    border-radius: 20px;
+}
+
+.img-carta {
+    width: 95%;
+    height: 50%;
+}
+
+.padding-carta {
+    padding: 10px;
+}
+
+.carta{
+    width: 16.6%;
+    height: 30%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.carta div{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.frente{
+    transform: rotateY( 0deg );
+}
+
+.atras{
+    width: 90%;
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    transform: rotateY( 180deg );
+}
+
+.flipped{
+    transition: transform 1s;
+    transform: rotateY( 180deg );
+}
+
+#pregunta-correctos{
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #CFD8DC;
+    border: #607D8B solid 5px;
+    border-radius: 20px;
+}
+
+#tablero_puntaje input{
+    font-size: larger;
+}
+
+.panel-custom{
+    background: white;
+    border: solid #607D8B;
+}
+
+.panel-custom-head{
+    background: #607D8B;
+    color: white;
+
+}
+
+#respuesta-si{
+    background-color: #388e3c;
+    border-color: #388e3c;
+}
+
+#respuesta-no{
+    background-color: #dd2c00;
+    border-color: #dd2c00;
+}
+
+.buen-tiempo{
+    margin-top: 0px;
+    color: #388e3c;
+}
+
+.poco-tiempo{
+    margin-top: 0px;
+    color: #dd2c00;
+}
+
+.modal-header{
+    text-align: center;
+    background-color: #CFD8DC;
+    border-color: #CFD8DC;
+}
+
+.modal-footer{
+    background-color: #455A64;
+    border-color: #455A64;
+}
+
+#respuesta-si{
+    color: whitesmoke;
+    background: #4CAF50;
+}
+
+#respuesta-no{
+    color: whitesmoke;
+    background: #E91E63;
+}
+
+.btn{
+    color: #000;
+    background: #CFD8DC;
+    border: #CFD8DC;
+}
+
+.btn:hover{
+    color: #000;
+    background: #90BFD6;
+    border: #90BFD6;
+}

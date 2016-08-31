@@ -1,0 +1,49 @@
+/* 
+    Created on : 5/05/2016, 07:11:53 PM
+    Author     : Eduardo
+*/
+
+
+@font-face{
+    font-family: Raleway;
+    src: url(../resources/fonts/Raleway-Medium.ttf);
+}
+
+body{
+    font-family: Raleway;
+    background: #455A64;
+}
+
+#panel-menu{
+    background: #CFD8DC;
+}
+
+.container-fluid{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
+form{
+    padding-bottom: 10px;
+}
+
+.btn{
+    color: whitesmoke;
+    background: #607D8B;
+    border: #607D8B;
+}
+
+.btn:hover{
+    color: whitesmoke;
+    background: #90BFD6;
+    border: #90BFD6;
+}
+
+#logo{
+    margin: 10px;
+    padding: 5px;
+    background: #CFD8DC;
+    border-radius: 10px;
+}
