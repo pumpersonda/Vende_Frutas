@@ -60,12 +60,11 @@ function crearCartas(concepto, descipcion, indice) {
     //cargamos la carta y le inyectamos los el concepto
     $.get("../sections/carta.html", function (data) {
         var htmlCarta = $.parseHTML(data);
-//        $(htmlCarta).attr("id", "C" + indice + concepto);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "definicion");
         $(htmlCarta).find("#texto").append(concepto);
         $(htmlCarta).find("#img-correcta").hide();
-        $(htmlCarta).find("#imagen-carta").attr("src", "../img/carta_uady.png");
+        $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
     });
@@ -73,12 +72,11 @@ function crearCartas(concepto, descipcion, indice) {
     //Luego creamos otra carta con la descripcion
     $.get("../sections/carta.html", function (data) {
         var htmlCarta = $.parseHTML(data);
-//        $(htmlCarta).attr("id", "D" + indice + concepto);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
         $(htmlCarta).find("#texto").append(descipcion);
         $(htmlCarta).find("#img-correcta").hide();
-        $(htmlCarta).find("#imagen-carta").attr("src", "../img/carta_uady_c.png");
+        $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
     });
@@ -88,15 +86,11 @@ var parejaSeleccionada = [];
 
 function asignarListeners(carta) {
     $(carta).click(function () {
+        $(carta).toggleClass("flipped");
+        //Le quitamos el evento de click
+        $(carta).unbind("click");
+        parejaSeleccionada.push(carta);
 
-        if ($(carta).attr("tipo") !== $(parejaSeleccionada[0]).attr("tipo")) {
-            $(carta).toggleClass("flipped");
-            //Le quitamos el evento de click
-            $(carta).unbind("click");
-            parejaSeleccionada.push(carta);
-        } else {
-            //alert("Son iguales");
-        }
 
         //Si es la segunda carta seleccionada
         if (parejaSeleccionada.length > 1) {
