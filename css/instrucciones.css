@@ -1,0 +1,33 @@
+.h1{
+	font-size: xxx-large;
+}
+
+.parrafo .p1{
+	font-size: x-large;
+}
+
+.parrafo .p2{
+	font-size: x-large;
+}
+
+.parrafo .p3{
+	font-size: x-large;
+}
+
+body{
+	font-family: 'Bungee Shade', cursive;   
+    font-family: 'Baloo Paaji', cursive;
+	background:#5FFFFF;
+
+}
+
+
+.next{
+
+	cursor: pointer;
+	display: block;
+	margin: 0 auto 0 auto;
+	margin-top: 60px;
+
+}
+
