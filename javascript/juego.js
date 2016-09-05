@@ -4,19 +4,19 @@ $(document).ready(function () {
     $("#puntaje").val("0");
     asignarListenersPregunta();
 
-    var tiempo = 150;
+    //var tiempo = 150;
     dificultad = "facil";
     materia = 2;
 
     switch (dificultad) {
         case "facil":
-            tiempo = 300;
+           // tiempo = 300;
             break;
         case "medio":
-            tiempo = 250;
+            //tiempo = 250;
             break;
         case "dificil":
-            tiempo = 5;
+           // tiempo = 5;
             break;
     }
 
@@ -249,8 +249,10 @@ function desbloquearCartas() {
         asignarListeners(cartas[i]);
     }
 }
-
+/*
 var intervaloContador;
+
+
 
 function iniciarContador(tiempo) {
     $("#timer").text(tiempo);
@@ -272,6 +274,7 @@ function iniciarContador(tiempo) {
     }, 1000);
 }
 
+
 function mostrarTiempoTerminado() {
     $("#titulo-modal").text("¡Se terminó el tiempo!");
     mostrarModal();
@@ -281,6 +284,7 @@ function mostrarGanaste() {
     $("#titulo-modal").text("¡Has Ganado!");
     mostrarModal();
 }
+*/
 
 function mostrarModal() {
     //Hacemos que el modal no se pueda cerrar
