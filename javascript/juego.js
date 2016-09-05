@@ -143,10 +143,12 @@ function confirmarRespuesta(respuesta, caso) {
         case 2:
             sumarPuntos(-3);
             ocultarSeleccionados();
+            deleteLife();
             break;
         case 3:
             sumarPuntos(-3);
             ocultarSeleccionados();
+            deleteLife();
             break;
         case 4:
             sumarPuntos(1);
@@ -343,14 +345,18 @@ function revolver(array) {
     return array;
 }
 
-function setLife(lifePoints) {
+function setLife() {
     for (var i = 0; i < vidas; i++) {
         (function (currentImage) {
-            var nameId = "lifePoints"+currentImage;
-            $("#life").append("<img id="+nameId+" class='padding-carta'>");
-            $("#lifePoints"+currentImage).attr("src", "../img/life.png");
+            var nameId = "lifePoints" + currentImage;
+            $("#life").append("<img id=" + nameId + " class='padding-carta'>");
+            $("#lifePoints" + currentImage).attr("src", "../img/life.png");
         })(i);
-
     }
+}
 
+function deleteLife() {
+    var currentLife = vidas - 1;
+    vidas--;
+    $("#lifePoints" + currentLife).remove();
 }
