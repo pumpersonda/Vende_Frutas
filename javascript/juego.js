@@ -5,27 +5,29 @@ $(document).ready(function () {
     asignarListenersPregunta();
 
     //var tiempo = 150;
+
     dificultad = "facil";
     materia = 2;
+    vidas = 3;
 
     switch (dificultad) {
         case "facil":
-           // tiempo = 300;
+            // tiempo = 300;
             break;
         case "medio":
             //tiempo = 250;
             break;
         case "dificil":
-           // tiempo = 5;
+            // tiempo = 5;
             break;
     }
 
     pedirDatos(materia);
-    iniciarContador(tiempo);
+    // iniciarContador(tiempo);
 
 
 });
-
+var vidas;
 var dificultad;
 var idUsuario;
 var materia;
@@ -55,6 +57,7 @@ function procesarDatos(datos) {
     for (var i = 0; i < 6; i++) {
         crearCartas(datos[i].concepto, datos[i].descripcion, i);
     }
+    setLife(vidas);
 }
 
 function crearCartas(concepto, descipcion, indice) {
@@ -250,41 +253,41 @@ function desbloquearCartas() {
     }
 }
 /*
-var intervaloContador;
+ var intervaloContador;
 
 
 
-function iniciarContador(tiempo) {
-    $("#timer").text(tiempo);
-    intervaloContador = setInterval(function () {
-        var tiempoDecr = parseInt($("#timer").text());
+ function iniciarContador(tiempo) {
+ $("#timer").text(tiempo);
+ intervaloContador = setInterval(function () {
+ var tiempoDecr = parseInt($("#timer").text());
 
-        tiempoDecr = tiempoDecr - 1;
-        if (tiempoDecr === 100) {
-            $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
-        }
-        if (tiempoDecr === 0) {
-            console.log("Se acabo el tiempo");
-            clearInterval(intervaloContador);
-            mostrarTiempoTerminado();
-        }
+ tiempoDecr = tiempoDecr - 1;
+ if (tiempoDecr === 100) {
+ $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
+ }
+ if (tiempoDecr === 0) {
+ console.log("Se acabo el tiempo");
+ clearInterval(intervaloContador);
+ mostrarTiempoTerminado();
+ }
 
-        $("#timer").text(tiempoDecr);
+ $("#timer").text(tiempoDecr);
 
-    }, 1000);
-}
+ }, 1000);
+ }
 
 
-function mostrarTiempoTerminado() {
-    $("#titulo-modal").text("¡Se terminó el tiempo!");
-    mostrarModal();
-}
+ function mostrarTiempoTerminado() {
+ $("#titulo-modal").text("¡Se terminó el tiempo!");
+ mostrarModal();
+ }
 
-function mostrarGanaste() {
-    $("#titulo-modal").text("¡Has Ganado!");
-    mostrarModal();
-}
-*/
+ function mostrarGanaste() {
+ $("#titulo-modal").text("¡Has Ganado!");
+ mostrarModal();
+ }
+ */
 
 function mostrarModal() {
     //Hacemos que el modal no se pueda cerrar
@@ -340,4 +343,14 @@ function revolver(array) {
     return array;
 }
 
+function setLife(lifePoints) {
+    for (var i = 0; i < vidas; i++) {
+        (function (currentImage) {
+            var nameId = "lifePoints"+currentImage;
+            $("#life").append("<img id="+nameId+" class='padding-carta'>");
+            $("#lifePoints"+currentImage).attr("src", "../img/life.png");
+        })(i);
 
+    }
+
+}
