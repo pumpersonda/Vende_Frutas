@@ -154,10 +154,20 @@ function confirmarRespuesta(respuesta, caso) {
             sumarPuntos(1);
             ocultarSeleccionados();
             break;
+
+
     }
 
     desbloquearCartas();
-    confirmarGane();
+
+    if (cartas.length === 0) {
+        clearInterval(intervaloContador);
+        mostrarGanaste();
+    } else if (vidas === 0) {
+        confirmarPerdiste();
+    }
+
+
     //divResultado.hide(500);
     parejaSeleccionada = [];
 }
@@ -189,11 +199,10 @@ function sacarCartas(parejasSeleccionada) {
 
 }
 
-function confirmarGane() {
-    if (cartas.length === 0) {
-        clearInterval(intervaloContador);
-        mostrarGanaste();
-    }
+
+function confirmarPerdiste() {
+    mostrarPerdiste();
+
 }
 
 
@@ -271,7 +280,7 @@ function desbloquearCartas() {
  if (tiempoDecr === 0) {
  console.log("Se acabo el tiempo");
  clearInterval(intervaloContador);
- mostrarTiempoTerminado();
+ mostrarPerdiste();
  }
 
  $("#timer").text(tiempoDecr);
@@ -279,17 +288,18 @@ function desbloquearCartas() {
  }, 1000);
  }
 
-
- function mostrarTiempoTerminado() {
- $("#titulo-modal").text("¡Se terminó el tiempo!");
- mostrarModal();
- }
-
- function mostrarGanaste() {
- $("#titulo-modal").text("¡Has Ganado!");
- mostrarModal();
- }
  */
+
+function mostrarPerdiste() {
+    $("#titulo-modal").text("¡Se terminó el tiempo!");
+    mostrarModal();
+}
+
+function mostrarGanaste() {
+    $("#titulo-modal").text("¡Has Ganado!");
+    mostrarModal();
+}
+
 
 function mostrarModal() {
     //Hacemos que el modal no se pueda cerrar
