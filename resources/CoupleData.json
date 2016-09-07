@@ -1,40 +1,40 @@
 {
   "data":[
   {
-    "concepto": "1\/2",
-    "descripcion": "2\/4"
-  },
-  {
-    "concepto": "3\/9",
-    "descripcion": "9\/27"
-  },
-  {
-    "concepto": "1\/4",
-    "descripcion": "2\/8"
-  },
-  {
-    "concepto": ".25",
-    "descripcion": "1\/4"
-  },
-  {
-    "concepto": ".5",
-    "descripcion": "1\/2"
-  },
-  {
-    "concepto": "1",
-    "descripcion": "2\/2"
-  },
-  {
     "concepto": "1",
     "descripcion": "1"
   },
   {
-    "concepto": "1\/10",
-    "descripcion": "2\/20"
+    "concepto": "2",
+    "descripcion": "2"
   },
   {
-    "concepto": "1\/5",
-    "descripcion": "2\/10"
+    "concepto": "3",
+    "descripcion": "3"
+  },
+  {
+    "concepto": "4",
+    "descripcion": "4"
+  },
+  {
+    "concepto": "5",
+    "descripcion": "5"
+  },
+  {
+    "concepto": "6",
+    "descripcion": "6"
+  },
+  {
+    "concepto": "7",
+    "descripcion": "7"
+  },
+  {
+    "concepto": "8",
+    "descripcion": "8"
+  },
+  {
+    "concepto": "9",
+    "descripcion": "9"
   }
 ]
 }

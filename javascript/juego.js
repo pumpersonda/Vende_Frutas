@@ -4,36 +4,20 @@ $(document).ready(function () {
     $("#puntaje").val("0");
     asignarListenersPregunta();
 
-    //var tiempo = 150;
-
-    dificultad = "facil";
-    materia = 2;
     vidas = 3;
 
-    switch (dificultad) {
-        case "facil":
-            // tiempo = 300;
-            break;
-        case "medio":
-            //tiempo = 250;
-            break;
-        case "dificil":
-            // tiempo = 5;
-            break;
-    }
 
-    pedirDatos(materia);
-    // iniciarContador(tiempo);
+    pedirDatos();
 
 
 });
 var vidas;
-var dificultad;
-var idUsuario;
-var materia;
 var cartas = [];
+var numParejas = 2;
+var nivel = 1;
 
-function pedirDatos(materia) {
+
+function pedirDatos() {
     $.get("../core/php/DataManager.php").done(function (data) {
         if (!data) {
             //No hay datos
@@ -43,7 +27,7 @@ function pedirDatos(materia) {
         var datos = $.parseJSON(data);
         console.log(data);
 
-        if (datos.length < 6) {
+        if (datos.length < numParejas) {
             //datos incompletos
             salirJuego();
         }
@@ -54,7 +38,7 @@ function pedirDatos(materia) {
 
 
 function procesarDatos(datos) {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < numParejas; i++) {
         crearCartas(datos[i].concepto, datos[i].descripcion, i);
     }
     setLife(vidas);
@@ -161,7 +145,6 @@ function confirmarRespuesta(respuesta, caso) {
     desbloquearCartas();
 
     if (cartas.length === 0) {
-        clearInterval(intervaloContador);
         mostrarGanaste();
     } else if (vidas === 0) {
         confirmarPerdiste();
@@ -291,11 +274,13 @@ function desbloquearCartas() {
  */
 
 function mostrarPerdiste() {
-    $("#titulo-modal").text("¡Se terminó el tiempo!");
+    $("#modal-jugar").text("Reiniciar");
+    $("#titulo-modal").text("¡Se acabaron las vidas!");
     mostrarModal();
 }
 
 function mostrarGanaste() {
+    $("#modal-jugar").text("Siguiente Nivel");
     $("#titulo-modal").text("¡Has Ganado!");
     mostrarModal();
 }
@@ -304,11 +289,24 @@ function mostrarGanaste() {
 function mostrarModal() {
     //Hacemos que el modal no se pueda cerrar
     $("#modal-jugar").click(function () {
-        location.reload();
+        // location.reload();
+        if (nivel < 3) {
+            nextLevel();
+        } else {
+            nivel = 1;
+            vidas = 3;
+        }
+
+        if (nivel < 3 && vidas <= 0) {
+            nivel = 1;
+            vidas = 3;
+            location.reload();
+        }
+
     });
 
     $("#modal-regresar").click(function () {
-        window.location.href = "../sections/MenuStudent.html";
+        //  window.location.href = "../sections/MenuStudent.html";
     });
 
     var texto = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
@@ -319,24 +317,38 @@ function mostrarModal() {
         keyboard: false
     });
 
-    enviarDatosPuntaje();
+    //enviarDatosPuntaje();
 
     $("#modal-mensaje").modal('show');
 }
 
-function enviarDatosPuntaje() {
-    //var usuario = $("#nombre-jugador").text();
-    var puntaje = $("#puntaje").val();
-    $.get("../core/php/IngresarPuntaje.php", {
-        idUsuario: idUsuario,
-        idMateria: materia,
-        dificultad: dificultad,
-        puntaje: puntaje,
-        parejasEncontradas: 6 - cartas.length / 2
-    }).done(function (data) {
+function nextLevel() {
+    nivel++;
+    $("#modal-mensaje").modal('hide');
+    deleteOldCards();
+    pedirDatos();
 
-    });
 }
+
+function deleteOldCards() {
+    $("#tablero").find("div").remove();
+
+}
+
+/*function enviarDatosPuntaje() {
+ //var usuario = $("#nombre-jugador").text();
+ var puntaje = $("#puntaje").val();
+ $.get("../core/php/IngresarPuntaje.php", {
+ idUsuario: idUsuario,
+ idMateria: materia,
+ dificultad: dificultad,
+ puntaje: puntaje,
+ parejasEncontradas: 6 - cartas.length / 2
+ }).done(function (data) {
+
+ });
+ }
+ */
 
 function salirJuego() {
     //Aqui ira el menu del juego
