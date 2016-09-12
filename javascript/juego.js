@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
+    $("#nombre-nivel").text("Nivel" + nivel);
 
     vidas = 3;
 
@@ -18,7 +19,19 @@ var nivel = 1;
 
 
 function pedirDatos() {
-    $.get("../core/php/DataManager.php").done(function (data) {
+    var operation = {"operation": undefined};
+    switch (nivel) {
+        case 1:
+            operation.operation = "sum";
+            break;
+        case 2:
+            operation.operation = "rest";
+            break;
+        case 3:
+            operation.operation = "mul";
+            break;
+    }
+    $.get("../core/php/DataManagerSum.php", operation).done(function (data) {
         if (!data) {
             //No hay datos
             salirJuego();
@@ -300,7 +313,9 @@ function mostrarModal() {
         if (nivel < 3 && vidas <= 0) {
             nivel = 1;
             vidas = 3;
-            location.reload();
+            reloadPage();
+            pedirDatos();
+
         }
 
     });
@@ -324,16 +339,22 @@ function mostrarModal() {
 
 function nextLevel() {
     nivel++;
+    $("#nombre-nivel").text("Nivel" + nivel);
     $("#modal-mensaje").modal('hide');
     deleteOldCards();
     pedirDatos();
 
 }
 
-function deleteOldCards() {
-    $("#tablero").find("div").remove();
-
+function reloadPage() {
+    location.reload();
 }
+
+function deleteOldCards() {
+    var a = $("#tablero").find("div").remove();
+    console.log(a);
+}
+
 
 /*function enviarDatosPuntaje() {
  //var usuario = $("#nombre-jugador").text();

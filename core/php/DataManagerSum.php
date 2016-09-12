@@ -6,9 +6,15 @@
  * Time: 12:45 PM
  */
 require_once("FileReader.php");
+$operation = $_GET["operation"];
+
 $configFileName = "../../resources/CoupleData.json";
 
 $file = new FileReader($configFileName);
-$data = $file->getResource("data");
+try {
+    $data = $file->getResource($operation);
 
-echo json_encode($data);
+    echo json_encode($data);
+} catch (Exception $e) {
+    printf("Ha ocurrido un error");
+}
