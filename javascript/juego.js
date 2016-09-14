@@ -1,16 +1,12 @@
 $(document).ready(function () {
 
-
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
 
     vidas = 3;
-
-
     pedirDatos();
-
 
 });
 var vidas;
@@ -160,13 +156,11 @@ function confirmarRespuesta(respuesta, caso) {
     desbloquearCartas();
 
     if (cartas.length === 0) {
-        mostrarGanaste();
+        validateEndLevel();
     } else if (vidas === 0) {
-        confirmarPerdiste();
+        validateEndLevel();
     }
 
-
-    //divResultado.hide(500);
     parejaSeleccionada = [];
 }
 
@@ -198,13 +192,6 @@ function sacarCartas(parejasSeleccionada) {
 
 }
 
-
-function confirmarPerdiste() {
-    mostrarPerdiste();
-
-}
-
-
 function asignarListenersPregunta() {
     $("#respuesta-si").unbind("click");
     $("#respuesta-no").unbind("click");
@@ -213,9 +200,6 @@ function asignarListenersPregunta() {
         var id1 = $(parejaSeleccionada[0]).attr("id");
         var id2 = $(parejaSeleccionada[1]).attr("id");
 
-
-//        var idF1 = id1.substring(1);
-//        var idF2 = id2.substring(1);
 
         if (id1 === id2) {
             confirmarRespuesta(true, 1);
@@ -230,8 +214,6 @@ function asignarListenersPregunta() {
         var id1 = $(parejaSeleccionada[0]).attr("id");
         var id2 = $(parejaSeleccionada[1]).attr("id");
 
-//        var idF1 = id1.substring(1);
-//        var idF2 = id2.substring(1);
 
         if (id1 === id2) {
             confirmarRespuesta(false, 3);
@@ -262,77 +244,52 @@ function desbloquearCartas() {
         asignarListeners(cartas[i]);
     }
 }
-/*
- var intervaloContador;
 
 
-
- function iniciarContador(tiempo) {
- $("#timer").text(tiempo);
- intervaloContador = setInterval(function () {
- var tiempoDecr = parseInt($("#timer").text());
-
- tiempoDecr = tiempoDecr - 1;
- if (tiempoDecr === 100) {
- $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
- }
- if (tiempoDecr === 0) {
- console.log("Se acabo el tiempo");
- clearInterval(intervaloContador);
- mostrarPerdiste();
- }
-
- $("#timer").text(tiempoDecr);
-
- }, 1000);
- }
-
- */
-
-function mostrarPerdiste() {
-    $("#modal-jugar").text("Reiniciar");
-    $("#titulo-modal").text("¡Se acabaron las vidas!");
-    mostrarModal();
-}
-
-function mostrarGanaste() {
-    $("#modal-jugar").text("Siguiente Nivel");
-    $("#titulo-modal").text("¡Has Ganado!");
-    mostrarModal();
-}
-
-
-function mostrarModal() {
-    var levelSuccess = false;
-    if (nivel < 3 && vidas > 0) {
-        if (vidas === 3) {
-            vidas++;
-        }
-        levelSuccess = true;
-    }
-
-    var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
-
+function validateEndLevel() {
+    var isLevelSuccess = false;
+    var isLevelPerfect = false;
     var type = "error";
     var buttonMessage = "Reiniciar";
-    if (levelSuccess === true) {
+
+    if (nivel < 3 && vidas > 0) {
+        if (vidas >= 3) {
+            isLevelPerfect = true;
+        }
+        isLevelSuccess = true;
+    }
+
+    var message = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+
+
+    if (isLevelSuccess === true) {
         type = "success";
         buttonMessage = "Siguiente";
     }
 
+    showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonMessage);
+}
+
+
+function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonMessage) {
+
     swal({
         title: "Nivel terminado",
-        text: text,
+        text: message,
         type: type,
         allowOutsideClick: false,
         allowEscapeKey: false,
         showConfirmButton: true,
-        showCloseButton: false,
+        showCloseButton: true,
         showCancelButton: true,
         confirmButtonText: buttonMessage,
-        cancelButtonText: "Regresar al menu principal"
+        cancelButtonText: "Regresar al menu principal",
     }).then(function () {
-        if (levelSuccess === true) {
+        if (isLevelSuccess === true) {
+            if (isLevelPerfect === true) {
+                vidas++;
+                showAlertExtraLife();
+            }
             nextLevel();
 
         } else {
@@ -345,79 +302,19 @@ function mostrarModal() {
             swal("Menu", "Menu principal", "info");
         }
     });
-    /* var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
 
-     swal({
-     title: "Nivel terminado",
-     text: text,
-     type: 'success',
-     allowOutsideClick:false,
-     allowEscapeKey:false,
-     showCloseButton: false,
-     showCancelButton: true,
-     confirmButtonText: "Siguiente Nivel",
-     cancelButtonText: "Regresar al menu principal"
-     }).then(function () {
-     validateNextLevel();
-     },function (dismiss) {
-     if (dismiss === 'cancel') {
-     swal("Menu","Menu principal","info");
-     }
-     });
-     */
 }
 
-function aux() {
-    var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
-    var levelSucces = false;
-    var type = "error";
-    var showNextLevelButton = false;
-    if (levelSucces === true) {
-        type = "success";
-        showNextLevelButton = true;
-    }
 
+function showAlertExtraLife() {
     swal({
-        title: "Nivel terminado",
-        text: text,
-        type: type,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: showNextLevelButton,
-        showCloseButton: false,
-        showCancelButton: true,
-        confirmButtonText: "Siguiente Nivel",
-        cancelButtonText: "Regresar al menu principal"
-    }).then(function () {
-        if (levelSucces === true) {
-            reloadPage();
-            pedirDatos();
-        } else {
-            nextLevel();
-        }
-
-    }, function (dismiss) {
-        if (dismiss === 'cancel') {
-            swal("Menu", "Menu principal", "info");
-        }
+        title: 'Vida Extra!',
+        text: 'Haz ganado una vida extra',
+        imageUrl: '../img/heart.png',
+        animation: false
     });
 }
 
-function validateNextLevel() {
-    if (nivel < 3 && vidas <= 0) {
-        nivel = 1;
-        vidas = 3;
-        reloadPage();
-        pedirDatos();
-
-
-    } else if (nivel < 3 && vidas > 0) {
-        if (vidas === 3) {
-            vidas++;
-        }
-        nextLevel();
-    }
-}
 
 function nextLevel() {
     nivel++;
@@ -437,26 +334,6 @@ function deleteOldCards() {
     console.log(a);
 }
 
-
-/*function enviarDatosPuntaje() {
- //var usuario = $("#nombre-jugador").text();
- var puntaje = $("#puntaje").val();
- $.get("../core/php/IngresarPuntaje.php", {
- idUsuario: idUsuario,
- idMateria: materia,
- dificultad: dificultad,
- puntaje: puntaje,
- parejasEncontradas: 6 - cartas.length / 2
- }).done(function (data) {
-
- });
- }
- */
-
-function salirJuego() {
-    //Aqui ira el menu del juego
-    //location.href = "MenuStudent.html";
-}
 
 function revolver(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
