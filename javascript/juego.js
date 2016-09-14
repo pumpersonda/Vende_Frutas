@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
@@ -63,8 +64,8 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "definicion");
-        $(htmlCarta).find("#texto").append(concepto);
-        $(htmlCarta).find("#img-correcta").hide();
+        $(htmlCarta).find("#text-card").append(concepto);
+        $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
@@ -75,8 +76,9 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#texto").append(descipcion);
-        $(htmlCarta).find("#img-correcta").hide();
+        $(htmlCarta).find("#text-card").append(descipcion);
+        $(htmlCarta).find("#img-correct").hide();
+        $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
@@ -186,7 +188,8 @@ function sacarCartas(parejasSeleccionada) {
             var idSeleccionado = $(parejaSeleccionada[i]).attr("id");
             var idCarta = $(cartas[j]).attr("id");
             if (idSeleccionado === idCarta) {
-                $(cartas[j]).find("#img-correcta").show();
+                $(cartas[j]).find("#img-correct").show();
+                $(cartas[j]).find("#text-card").hide();
                 cartas.splice(j, 1);
                 break;
             }
