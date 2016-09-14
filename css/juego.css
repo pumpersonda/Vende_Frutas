@@ -81,7 +81,6 @@ body{
 .atras{
     width: 90%;
     position: absolute;
-    border: 2px solid black;
     border-radius: 20px;
     text-align: center;
     transform: rotateY( 180deg );

@@ -303,28 +303,105 @@ function mostrarGanaste() {
 
 
 function mostrarModal() {
+    var levelSuccess = false;
+    if (nivel < 3 && vidas > 0) {
+        if (vidas === 3) {
+            vidas++;
+        }
+        levelSuccess = true;
+    }
 
     var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+
+    var type = "error";
+    var buttonMessage = "Reiniciar";
+    if (levelSuccess === true) {
+        type = "success";
+        buttonMessage = "Siguiente";
+    }
 
     swal({
         title: "Nivel terminado",
         text: text,
-        type: 'success',
-        allowOutsideClick:false,
-        allowEscapeKey:false,
+        type: type,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: true,
+        showCloseButton: false,
+        showCancelButton: true,
+        confirmButtonText: buttonMessage,
+        cancelButtonText: "Regresar al menu principal"
+    }).then(function () {
+        if (levelSuccess === true) {
+            nextLevel();
+
+        } else {
+            reloadPage();
+            pedirDatos();
+        }
+
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+            swal("Menu", "Menu principal", "info");
+        }
+    });
+    /* var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+
+     swal({
+     title: "Nivel terminado",
+     text: text,
+     type: 'success',
+     allowOutsideClick:false,
+     allowEscapeKey:false,
+     showCloseButton: false,
+     showCancelButton: true,
+     confirmButtonText: "Siguiente Nivel",
+     cancelButtonText: "Regresar al menu principal"
+     }).then(function () {
+     validateNextLevel();
+     },function (dismiss) {
+     if (dismiss === 'cancel') {
+     swal("Menu","Menu principal","info");
+     }
+     });
+     */
+}
+
+function aux() {
+    var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+    var levelSucces = false;
+    var type = "error";
+    var showNextLevelButton = false;
+    if (levelSucces === true) {
+        type = "success";
+        showNextLevelButton = true;
+    }
+
+    swal({
+        title: "Nivel terminado",
+        text: text,
+        type: type,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: showNextLevelButton,
         showCloseButton: false,
         showCancelButton: true,
         confirmButtonText: "Siguiente Nivel",
         cancelButtonText: "Regresar al menu principal"
     }).then(function () {
-        validateNextLevel();
-    },function (dismiss) {
+        if (levelSucces === true) {
+            reloadPage();
+            pedirDatos();
+        } else {
+            nextLevel();
+        }
+
+    }, function (dismiss) {
         if (dismiss === 'cancel') {
-        swal("Menu","Menu principal","info");
+            swal("Menu", "Menu principal", "info");
         }
     });
 }
-
 
 function validateNextLevel() {
     if (nivel < 3 && vidas <= 0) {
