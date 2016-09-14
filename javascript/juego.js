@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
-    $("#nombre-nivel").text("Nivel" + nivel);
+    $("#nombre-nivel").text("Nivel " + nivel);
 
     vidas = 3;
 
@@ -31,7 +31,7 @@ function pedirDatos() {
             operation.operation = "mul";
             break;
     }
-    $.get("../core/php/DataManagerSum.php", operation).done(function (data) {
+    $.get("../core/php/DataManager.php", operation).done(function (data) {
         if (!data) {
             //No hay datos
             salirJuego();
@@ -300,46 +300,48 @@ function mostrarGanaste() {
 
 
 function mostrarModal() {
-    //Hacemos que el modal no se pueda cerrar
-    $("#modal-jugar").click(function () {
-        // location.reload();
-        if (nivel < 3) {
-            nextLevel();
-        } else {
-            nivel = 1;
-            vidas = 3;
+
+    var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+
+    swal({
+        title: "Nivel terminado",
+        text: text,
+        type: 'success',
+        allowOutsideClick:false,
+        allowEscapeKey:false,
+        showCloseButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Siguiente Nivel",
+        cancelButtonText: "Regresar al menu principal"
+    }).then(function () {
+        validateNextLevel();
+    },function (dismiss) {
+        if (dismiss === 'cancel') {
+        swal("Menu","Menu principal","info");
         }
+    });
+}
 
-        if (nivel < 3 && vidas <= 0) {
-            nivel = 1;
-            vidas = 3;
-            reloadPage();
-            pedirDatos();
 
+function validateNextLevel() {
+    if (nivel < 3 && vidas <= 0) {
+        nivel = 1;
+        vidas = 3;
+        reloadPage();
+        pedirDatos();
+
+
+    } else if (nivel < 3 && vidas > 0) {
+        if (vidas === 3) {
+            vidas++;
         }
-
-    });
-
-    $("#modal-regresar").click(function () {
-        //  window.location.href = "../sections/MenuStudent.html";
-    });
-
-    var texto = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
-    $("#contenido-modal").text(texto);
-
-    $("#modal-mensaje").modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-
-    //enviarDatosPuntaje();
-
-    $("#modal-mensaje").modal('show');
+        nextLevel();
+    }
 }
 
 function nextLevel() {
     nivel++;
-    $("#nombre-nivel").text("Nivel" + nivel);
+    $("#nombre-nivel").text("Nivel " + nivel);
     $("#modal-mensaje").modal('hide');
     deleteOldCards();
     pedirDatos();
