@@ -108,6 +108,32 @@ header .intro-text .name {
     margin-left: 45%;
 }
 
+ .games #game1{
+    width:200px;
+    height:200px;
+    border-radius:100px;
+    margin-left: 26%;
+    margin-top: 5%;
+}
+.games #game2{
+    width:200px;
+    height:200px;
+    border-radius:100px;
+    margin-left: 240px;
+}
+
+.games #game1:hover, .games #game2:hover, .games2 #game3:hover{
+    color: #000;
+    background: #90BFD6;
+    border: #90BFD6;
+}
 
 
-
+.games2 #game3{
+     width:200px;
+    height:200px;
+    border-radius:100px;
+    margin-left: 42%;
+    margin-top: 10%
+    
+}
