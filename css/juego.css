@@ -20,25 +20,24 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Eduardo
 */
 
-@font-face{
+@font-face {
     font-family: Raleway;
     src: url(../resources/fonts/Raleway-Medium.ttf);
 }
 
-body{
+body {
     font-family: Raleway;
-    background: #455A64;
+    background: #02ce6c;
 }
 
-@media screen and (min-width: 1300px){
-    p{
+@media screen and (min-width: 1300px) {
+    p {
         font-size: 1em;
     }
 }
 
-
-@media screen and (min-device-width: 700px) and (max-device-width: 1000px){
-    p{
+@media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
+    p {
         font-size: .5em;
     }
 }
@@ -48,120 +47,129 @@ body{
     margin: 10px;
 }
 
-.tablero-color{
+.tablero-color {
     background: #BE975B;
     margin-bottom: 10px;
     border: solid 5px #825B1F;
     border-radius: 20px;
 }
 
-
 .padding-carta {
     padding: 10px;
 }
 
-.carta{
+.carta {
     width: 16.6%;
     height: 30%;
     transform-style: preserve-3d;
     transition: transform 1s;
 }
 
-.carta div{
+.carta div {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
-
-
-.frente{
-    transform: rotateY( 0deg );
+.frente {
+    transform: rotateY(0deg);
 }
 
-.atras{
+.atras {
     width: 90%;
     position: absolute;
     border-radius: 20px;
     text-align: center;
-    transform: rotateY( 180deg );
+    transform: rotateY(180deg);
 }
 
-.flipped{
+.flipped {
     transition: transform 1s;
-    transform: rotateY( 180deg );
+    transform: rotateY(180deg);
 }
 
-#pregunta-correctos{
+#pregunta-correctos {
     margin-bottom: 10px;
     padding: 5px;
-    background-color: #4ebef2;
-    border: #607D8B solid 5px;
+    background-color: #fcf9ff;
+    border: #000000 solid 4px;
     border-radius: 20px;
 }
 
-#tablero_puntaje input{
+#pregunta-correctos:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 140px;
+    border: 25px solid;
+    border-color: transparent transparent #000000 #000000;
+}
+
+#pregunta-correctos:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 145px;
+    border: 21px solid;
+    border-color: transparent transparent #fff #fff;
+}
+
+#tablero_puntaje input {
     font-size: larger;
 }
 
-.panel-custom{
+.panel-custom {
     background: white;
     border: solid #4ebef2;
 }
 
-.panel-custom-head{
+.panel-custom-head {
     background: #4ebef2;
     color: white;
 
 }
 
-#respuesta-si{
+#respuesta-si {
     background-color: #388e3c;
     border-color: #388e3c;
 }
 
-#respuesta-no{
+#respuesta-no {
     background-color: #dd2c00;
     border-color: #dd2c00;
 }
 
-.buen-tiempo{
-    margin-top: 0px;
-    color: #388e3c;
-}
-
-.poco-tiempo{
-    margin-top: 0px;
-    color: #dd2c00;
-}
-
-.modal-header{
+.modal-header {
     text-align: center;
     background-color: #CFD8DC;
     border-color: #CFD8DC;
 }
 
-.modal-footer{
+.modal-footer {
     background-color: #4ebef2;
     border-color: #4ebef2;
 }
 
-#respuesta-si{
+#respuesta-si {
     color: whitesmoke;
     background: #4CAF50;
 }
 
-#respuesta-no{
+#respuesta-no {
     color: whitesmoke;
     background: #E91E63;
 }
 
-.btn{
+.btn {
     color: #000;
     background: #CFD8DC;
     border: #CFD8DC;
 }
 
-.btn:hover{
+.btn:hover {
     color: #000;
     background: #4ebef2;
     border: #4ebef2;
@@ -173,8 +181,9 @@ body{
 }
 
 #text-card {
-    position: absolute;
-    top: 50px;
+    position: relative;
+    /*top: 50px;*/
+    bottom: 100px;
     left: 0;
     width: 100%;
 }
@@ -182,10 +191,13 @@ body{
 #img-correct {
     position: absolute;
     top: 50px;
-    left:55px;
+    left: 55px;
 }
 
-#penguin-img{
+#penguin-img {
     width: 15%;
+    position: absolute;
+    top: 50%;
+    left: 18%;
 }
 

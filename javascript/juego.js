@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     $("#pregunta-correctos").hide();
-    $("#puntaje").val("0");
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
     $("#penguin").find("#penguin-img").attr("src", "../img/pin_maestra.png");
@@ -133,21 +132,17 @@ function confirmarRespuesta(respuesta, caso) {
 
     switch (caso) {
         case 1:
-            sumarPuntos(3);
             sacarCartas(parejaSeleccionada);
             break;
         case 2:
-            sumarPuntos(-3);
             ocultarSeleccionados();
             deleteLife();
             break;
         case 3:
-            sumarPuntos(-3);
             ocultarSeleccionados();
             deleteLife();
             break;
         case 4:
-            sumarPuntos(1);
             ocultarSeleccionados();
             break;
 
@@ -171,11 +166,11 @@ function ocultarSeleccionados() {
     }
 }
 
-function sumarPuntos(puntos) {
+/*function sumarPuntos(puntos) {
     var puntaje = parseInt($("#puntaje").val());
     puntaje = puntaje + puntos;
     $("#puntaje").val(puntaje);
-}
+}*/
 
 function sacarCartas(parejasSeleccionada) {
     for (var i = 0, max = parejasSeleccionada.length; i < max; i++) {
