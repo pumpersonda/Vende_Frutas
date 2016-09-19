@@ -9,15 +9,10 @@ $(document).ready(function () {
     vidas = 3;
 
 
-<<<<<<< HEAD
-    pedirDatos(materia);
-    iniciarContador(tiempo);
-    
-=======
     pedirDatos();
 
 
->>>>>>> ec71808a9ee11d5abd4dbd6ba3174759e6d55513
+
 });
 var vidas;
 var cartas = [];
