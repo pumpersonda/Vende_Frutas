@@ -4,6 +4,7 @@ $(document).ready(function () {
     $("#puntaje").val("0");
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
+    $("#penguin").find("#penguin-img").attr("src", "../img/pin_maestra.png");
 
     vidas = 3;
     pedirDatos();
@@ -156,9 +157,9 @@ function confirmarRespuesta(respuesta, caso) {
     desbloquearCartas();
 
     if (cartas.length === 0) {
-        validateEndLevel();
+        validateLevel();
     } else if (vidas === 0) {
-        validateEndLevel();
+        validateLevel();
     }
 
     parejaSeleccionada = [];
@@ -246,7 +247,7 @@ function desbloquearCartas() {
 }
 
 
-function validateEndLevel() {
+function validateLevel() {
     var isLevelSuccess = false;
     var isLevelPerfect = false;
     var type = "error";

@@ -94,7 +94,7 @@ body{
 #pregunta-correctos{
     margin-bottom: 10px;
     padding: 5px;
-    background-color: #CFD8DC;
+    background-color: #4ebef2;
     border: #607D8B solid 5px;
     border-radius: 20px;
 }
@@ -105,11 +105,11 @@ body{
 
 .panel-custom{
     background: white;
-    border: solid #607D8B;
+    border: solid #4ebef2;
 }
 
 .panel-custom-head{
-    background: #607D8B;
+    background: #4ebef2;
     color: white;
 
 }
@@ -141,8 +141,8 @@ body{
 }
 
 .modal-footer{
-    background-color: #455A64;
-    border-color: #455A64;
+    background-color: #4ebef2;
+    border-color: #4ebef2;
 }
 
 #respuesta-si{
@@ -163,8 +163,8 @@ body{
 
 .btn:hover{
     color: #000;
-    background: #90BFD6;
-    border: #90BFD6;
+    background: #4ebef2;
+    border: #4ebef2;
 }
 
 #response-card {
@@ -183,5 +183,9 @@ body{
     position: absolute;
     top: 50px;
     left:55px;
+}
+
+#penguin-img{
+    width: 15%;
 }
 
