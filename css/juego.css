@@ -49,16 +49,12 @@ body{
 }
 
 .tablero-color{
-    background: #CFD8DC;
+    background: #BE975B;
     margin-bottom: 10px;
-    border: solid 5px #607D8B;
+    border: solid 5px #825B1F;
     border-radius: 20px;
 }
 
-.img-carta {
-    width: 95%;
-    height: 50%;
-}
 
 .padding-carta {
     padding: 10px;
@@ -75,6 +71,8 @@ body{
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
+
+
 
 .frente{
     transform: rotateY( 0deg );
@@ -169,3 +167,22 @@ body{
     background: #90BFD6;
     border: #90BFD6;
 }
+
+#response-card {
+    position: relative;
+    width: 100%; /* for IE 6 */
+}
+
+#text-card {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+}
+
+#img-correct {
+    position: absolute;
+    top: 50px;
+    left:55px;
+}
+

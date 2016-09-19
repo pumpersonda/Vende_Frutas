@@ -1,37 +1,44 @@
 $(document).ready(function () {
 
+
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
+    $("#nombre-nivel").text("Nivel " + nivel);
 
-    var tiempo = 150;
-    dificultad = "facil";
-    materia = 2;
+    vidas = 3;
 
-    switch (dificultad) {
-        case "facil":
-            tiempo = 300;
-            break;
-        case "medio":
-            tiempo = 250;
-            break;
-        case "dificil":
-            tiempo = 5;
-            break;
-    }
 
+<<<<<<< HEAD
     pedirDatos(materia);
     iniciarContador(tiempo);
     
+=======
+    pedirDatos();
+
+
+>>>>>>> ec71808a9ee11d5abd4dbd6ba3174759e6d55513
 });
-
-var dificultad;
-var idUsuario;
-var materia;
+var vidas;
 var cartas = [];
+var numParejas = 2;
+var nivel = 1;
 
-function pedirDatos(materia) {
-    $.get("../core/php/DataManager.php").done(function (data) {
+
+function pedirDatos() {
+    var operation = {"operation": undefined};
+    switch (nivel) {
+        case 1:
+            operation.operation = "sum";
+            break;
+        case 2:
+            operation.operation = "rest";
+            break;
+        case 3:
+            operation.operation = "mul";
+            break;
+    }
+    $.get("../core/php/DataManager.php", operation).done(function (data) {
         if (!data) {
             //No hay datos
             salirJuego();
@@ -40,7 +47,7 @@ function pedirDatos(materia) {
         var datos = $.parseJSON(data);
         console.log(data);
 
-        if (datos.length < 6) {
+        if (datos.length < numParejas) {
             //datos incompletos
             salirJuego();
         }
@@ -51,9 +58,10 @@ function pedirDatos(materia) {
 
 
 function procesarDatos(datos) {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < numParejas; i++) {
         crearCartas(datos[i].concepto, datos[i].descripcion, i);
     }
+    setLife(vidas);
 }
 
 function crearCartas(concepto, descipcion, indice) {
@@ -62,8 +70,8 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "definicion");
-        $(htmlCarta).find("#texto").append(concepto);
-        $(htmlCarta).find("#img-correcta").hide();
+        $(htmlCarta).find("#text-card").append(concepto);
+        $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
@@ -74,8 +82,9 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#texto").append(descipcion);
-        $(htmlCarta).find("#img-correcta").hide();
+        $(htmlCarta).find("#text-card").append(descipcion);
+        $(htmlCarta).find("#img-correct").hide();
+        $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
         asignarListeners(htmlCarta);
         colocarCartas(htmlCarta);
@@ -139,19 +148,30 @@ function confirmarRespuesta(respuesta, caso) {
         case 2:
             sumarPuntos(-3);
             ocultarSeleccionados();
+            deleteLife();
             break;
         case 3:
             sumarPuntos(-3);
             ocultarSeleccionados();
+            deleteLife();
             break;
         case 4:
             sumarPuntos(1);
             ocultarSeleccionados();
             break;
+
+
     }
 
     desbloquearCartas();
-    confirmarGane();
+
+    if (cartas.length === 0) {
+        mostrarGanaste();
+    } else if (vidas === 0) {
+        confirmarPerdiste();
+    }
+
+
     //divResultado.hide(500);
     parejaSeleccionada = [];
 }
@@ -174,7 +194,8 @@ function sacarCartas(parejasSeleccionada) {
             var idSeleccionado = $(parejaSeleccionada[i]).attr("id");
             var idCarta = $(cartas[j]).attr("id");
             if (idSeleccionado === idCarta) {
-                $(cartas[j]).find("#img-correcta").show();
+                $(cartas[j]).find("#img-correct").show();
+                $(cartas[j]).find("#text-card").hide();
                 cartas.splice(j, 1);
                 break;
             }
@@ -183,11 +204,10 @@ function sacarCartas(parejasSeleccionada) {
 
 }
 
-function confirmarGane() {
-    if (cartas.length === 0) {
-        clearInterval(intervaloContador);
-        mostrarGanaste();
-    }
+
+function confirmarPerdiste() {
+    mostrarPerdiste();
+
 }
 
 
@@ -248,75 +268,119 @@ function desbloquearCartas() {
         asignarListeners(cartas[i]);
     }
 }
+/*
+ var intervaloContador;
 
-var intervaloContador;
 
-function iniciarContador(tiempo) {
-    $("#timer").text(tiempo);
-    intervaloContador = setInterval(function () {
-        var tiempoDecr = parseInt($("#timer").text());
 
-        tiempoDecr = tiempoDecr - 1;
-        if (tiempoDecr === 100) {
-            $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
-        }
-        if (tiempoDecr === 0) {
-            console.log("Se acabo el tiempo");
-            clearInterval(intervaloContador);
-            mostrarTiempoTerminado();
-        }
+ function iniciarContador(tiempo) {
+ $("#timer").text(tiempo);
+ intervaloContador = setInterval(function () {
+ var tiempoDecr = parseInt($("#timer").text());
 
-        $("#timer").text(tiempoDecr);
+ tiempoDecr = tiempoDecr - 1;
+ if (tiempoDecr === 100) {
+ $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
+ }
+ if (tiempoDecr === 0) {
+ console.log("Se acabo el tiempo");
+ clearInterval(intervaloContador);
+ mostrarPerdiste();
+ }
 
-    }, 1000);
-}
+ $("#timer").text(tiempoDecr);
 
-function mostrarTiempoTerminado() {
-    $("#titulo-modal").text("¡Se terminó el tiempo!");
+ }, 1000);
+ }
+
+ */
+
+function mostrarPerdiste() {
+    $("#modal-jugar").text("Reiniciar");
+    $("#titulo-modal").text("¡Se acabaron las vidas!");
     mostrarModal();
 }
 
 function mostrarGanaste() {
+    $("#modal-jugar").text("Siguiente Nivel");
     $("#titulo-modal").text("¡Has Ganado!");
     mostrarModal();
 }
 
+
 function mostrarModal() {
-    //Hacemos que el modal no se pueda cerrar
-    $("#modal-jugar").click(function () {
-        location.reload();
-    });
 
-    $("#modal-regresar").click(function () {
-        window.location.href = "../sections/MenuStudent.html";
-    });
+    var text = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
 
-    var texto = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
-    $("#contenido-modal").text(texto);
-
-    $("#modal-mensaje").modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-
-    enviarDatosPuntaje();
-
-    $("#modal-mensaje").modal('show');
-}
-
-function enviarDatosPuntaje() {
-    //var usuario = $("#nombre-jugador").text();
-    var puntaje = $("#puntaje").val();
-    $.get("../core/php/IngresarPuntaje.php", {
-        idUsuario: idUsuario,
-        idMateria: materia,
-        dificultad: dificultad,
-        puntaje: puntaje,
-        parejasEncontradas: 6 - cartas.length / 2
-    }).done(function (data) {
-
+    swal({
+        title: "Nivel terminado",
+        text: text,
+        type: 'success',
+        allowOutsideClick:false,
+        allowEscapeKey:false,
+        showCloseButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Siguiente Nivel",
+        cancelButtonText: "Regresar al menu principal"
+    }).then(function () {
+        validateNextLevel();
+    },function (dismiss) {
+        if (dismiss === 'cancel') {
+        swal("Menu","Menu principal","info");
+        }
     });
 }
+
+
+function validateNextLevel() {
+    if (nivel < 3 && vidas <= 0) {
+        nivel = 1;
+        vidas = 3;
+        reloadPage();
+        pedirDatos();
+
+
+    } else if (nivel < 3 && vidas > 0) {
+        if (vidas === 3) {
+            vidas++;
+        }
+        nextLevel();
+    }
+}
+
+function nextLevel() {
+    nivel++;
+    $("#nombre-nivel").text("Nivel " + nivel);
+    $("#modal-mensaje").modal('hide');
+    deleteOldCards();
+    pedirDatos();
+
+}
+
+function reloadPage() {
+    location.reload();
+}
+
+function deleteOldCards() {
+    var a = $("#tablero").find("div").remove();
+    console.log(a);
+}
+
+
+/*function enviarDatosPuntaje() {
+ //var usuario = $("#nombre-jugador").text();
+ var puntaje = $("#puntaje").val();
+ $.get("../core/php/IngresarPuntaje.php", {
+ idUsuario: idUsuario,
+ idMateria: materia,
+ dificultad: dificultad,
+ puntaje: puntaje,
+ parejasEncontradas: 6 - cartas.length / 2
+ }).done(function (data) {
+
+ });
+ }
+ */
 
 function salirJuego() {
     //Aqui ira el menu del juego
@@ -335,4 +399,18 @@ function revolver(array) {
     return array;
 }
 
+function setLife() {
+    for (var i = 0; i < vidas; i++) {
+        (function (currentImage) {
+            var nameId = "lifePoints" + currentImage;
+            $("#life").append("<img id=" + nameId + " class='padding-carta'>");
+            $("#lifePoints" + currentImage).attr("src", "../img/life.png");
+        })(i);
+    }
+}
 
+function deleteLife() {
+    var currentLife = vidas - 1;
+    vidas--;
+    $("#lifePoints" + currentLife).remove();
+}
