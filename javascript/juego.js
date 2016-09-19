@@ -22,8 +22,7 @@ $(document).ready(function () {
 
     pedirDatos(materia);
     iniciarContador(tiempo);
-
-
+    
 });
 
 var dificultad;
