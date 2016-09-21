@@ -17,80 +17,76 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 -->
 <html>
-    <head>
-        <title>Memorama</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Memorama</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../lib/sweetalert2/sweetalert2.min.css">
-        <link rel="stylesheet" href="../css/juego.css">
-        <script src="../lib/sweetalert2/sweetalert2.min.js"></script>
-        <script src="../lib/jquery/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="../javascript/juego.js"></script>
-        <link rel="icon" href="../resources/tab_logo/my_logo.png">
-        <script type="text/javascript" src="../lib/jqueryui/jquery-ui.js"></script>
-        <script src="../lib/bootstrap/js/bootstrap.js"></script>
-
-
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../css/juego.css">
+    <script src="../lib/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../lib/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../javascript/juego.js"></script>
+    <link rel="icon" href="../resources/tab_logo/my_logo.png">
+    <script type="text/javascript" src="../lib/jqueryui/jquery-ui.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
 
 
-    </head>
-    <body class="padding-juego">    
+</head>
+<body class="padding-juego">
 
-        <aside class="col-sm-2">
-            <div class="panel panel-custom">
-                <div class="panel-heading panel-custom-head">
-                    <h4>Ayudame a encontrar las bolsas del mismo peso</h4>
-                </div>
-
-                <div id="tablero_puntaje" class="panel-body">
-
-
-                    <div  id="life" class="text-center"></div>
-
-                    <h2 id="nombre-nivel">Jugador 1</h2>
-                   <!-- <label for="puntaje">Puntaje</label>
-                    <input type="number" class="form-control" id="puntaje" disabled="disabled">-->
-
-
-
-
-                </div>
-            </div>
-            <div id="resultado"></div>
-
-            <div class="col-sm-12 text-center speech" id="pregunta-correctos">
-
-                <div>
-                    <h2>¿Son equivalentes los pesos de las bolsas?</h2>
-                </div>
-
-                <div>
-                    <h3>
-                        <button id="respuesta-si" class="btn btn-success">Si</button>
-                        <button id="respuesta-no" class="btn btn-danger">No</button>
-                    </h3>
-                </div>
-
-            </div>
-
-
-
-        </aside>
-
-        <main class="col-sm-10 tablero-color">
-
-            <!-- <div class=""> -->
-                <div id="tablero" class="">
-                </div>
-            </main>
-
-        <!--</div> -->
-
-        <div id="penguin">
-            <img id="penguin-img"  class="image img-rounded img-carta">
+<div class="col-sm-2">
+    <div class="panel panel-custom">
+        <div class="panel-heading panel-custom-head">
+            <h4>Ayudame a encontrar las bolsas del mismo peso</h4>
         </div>
-    </body>
+
+        <div id="tablero_puntaje" class="panel-body">
+
+
+            <div id="life" class="text-center"></div>
+
+            <h2 id="nombre-nivel">Jugador 1</h2>
+            <!-- <label for="puntaje">Puntaje</label>
+             <input type="number" class="form-control" id="puntaje" disabled="disabled">-->
+
+
+        </div>
+    </div>
+    <div id="resultado"></div>
+
+    <div class="col-sm-12 text-center speech" id="pregunta-correctos">
+
+        <div>
+            <h2>¿Son equivalentes los pesos de las bolsas?</h2>
+        </div>
+
+        <div>
+            <h3>
+                <button id="respuesta-si" class="btn btn-success">Si</button>
+                <button id="respuesta-no" class="btn btn-danger">No</button>
+            </h3>
+        </div>
+
+    </div>
+
+
+</div>
+
+<main class="col-sm-10 tablero-color">
+
+    <!-- <div class=""> -->
+    <div id="tablero" class="">
+    </div>
+</main>
+
+<!--</div> -->
+
+
+<img id="penguin-img" class="image img-rounded img-carta">
+
+
+</body>
 
 </html>

@@ -3,15 +3,19 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
-    $("#penguin").find("#penguin-img").attr("src", "../img/pin_maestra.png");
-
+    $("#penguin-img").attr("src", "../img/pin_maestra.png");
+    $("#market").find("#market-img").attr("src", "../img/market.jpg");
+    /*
+    $(document.body).css("background"," url('../img/fondo.jpg') no-repeat");
+    $(document.body).css("background-size","100% 700px");
+    */
     vidas = 3;
     pedirDatos();
 
 });
 var vidas;
 var cartas = [];
-var numParejas = 2;
+var numParejas = 1;
 var nivel = 1;
 
 
@@ -279,7 +283,7 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
         showCloseButton: true,
         showCancelButton: true,
         confirmButtonText: buttonMessage,
-        cancelButtonText: "Regresar al menu principal",
+        cancelButtonText: "Regresar al menu principal"
     }).then(function () {
         if (isLevelSuccess === true) {
             if (isLevelPerfect === true) {

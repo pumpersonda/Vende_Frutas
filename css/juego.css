@@ -43,7 +43,7 @@ body {
 }
 
 .padding-juego {
-    padding: 0px;
+    padding: 0;
     margin: 10px;
 }
 
@@ -196,8 +196,13 @@ body {
 
 #penguin-img {
     width: 15%;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 18%;
 }
 
+body{
+    background: url("../img/fondo.jpg") no-repeat;
+    background-size: 100% 700px;
+
+}
