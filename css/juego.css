@@ -48,8 +48,9 @@ body {
 }
 
 .tablero-color {
-    background: #BE975B;
-    margin-bottom: 10px;
+    margin-top: 4.1%;
+    margin-right: 40%;
+    background: transparent;
     border: solid 5px #825B1F;
     border-radius: 20px;
 }
@@ -198,11 +199,16 @@ body {
     width: 15%;
     position: relative;
     top: 50%;
-    left: 18%;
+    left: 10%;
 }
 
 body{
     background: url("../img/fondo.jpg") no-repeat;
     background-size: 100% 700px;
 
+}
+
+aside{
+    position:relative;
+    left:82%;
 }
