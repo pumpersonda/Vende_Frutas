@@ -3,19 +3,14 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
-    $("#penguin-img").attr("src", "../img/pin_maestra.png");
-    $("#market").find("#market-img").attr("src", "../img/market.jpg");
-    /*
-    $(document.body).css("background"," url('../img/fondo.jpg') no-repeat");
-    $(document.body).css("background-size","100% 700px");
-    */
+
     vidas = 3;
     pedirDatos();
 
 });
 var vidas;
 var cartas = [];
-var numParejas = 6;
+var numParejas = 2;
 var nivel = 1;
 
 
@@ -299,7 +294,7 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
 
     }, function (dismiss) {
         if (dismiss === 'cancel') {
-            swal("Menu", "Menu principal", "info");
+            location.href = './menu.html';
         }
     });
 
