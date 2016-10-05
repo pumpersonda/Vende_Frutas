@@ -48,10 +48,10 @@ body {
 }
 
 .tablero-color {
-    margin-top: 4.1%;
-    margin-right: 40%;
+    position: relative;
+    margin-top: 15%;
     background: transparent;
-    border: solid 5px #825B1F;
+    border: solid 5px transparent;
     border-radius: 20px;
 }
 
@@ -89,7 +89,8 @@ body {
 }
 
 #pregunta-correctos {
-    margin-bottom: 10px;
+    position: absolute;
+    margin-bottom: 5px;
     padding: 5px;
     background-color: #fcf9ff;
     border: #000000 solid 4px;
@@ -195,20 +196,16 @@ body {
     left: 55px;
 }
 
-#penguin-img {
-    width: 15%;
-    position: relative;
-    top: 50%;
-    left: 10%;
-}
-
-body{
+body {
     background: url("../img/fondo.jpg") no-repeat;
     background-size: 100% 700px;
 
 }
 
 aside{
-    position:relative;
-    left:82%;
+    padding-top: 15%;
+}
+
+footer {
+    padding-top: 2%;
 }
