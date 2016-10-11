@@ -15,9 +15,10 @@
 }
 
 body{
-	font-family: 'Bungee Shade', cursive;   
+  font-family: 'Bungee Shade', cursive;   
   font-family: 'Baloo Paaji', cursive;
-	background-image: url("../img/images.jpg");
+  background-image: url("../img/images.jpg") ;
+  max-width: 100%
   background-repeat: no-repeat;
   background-size: auto auto;
 }

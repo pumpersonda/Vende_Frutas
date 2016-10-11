@@ -1,10 +1,11 @@
 $(document).ready(function () {
-
+    var currentTime= 45; //modificado alex
 
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
+    document.getElementById('sound').currentTime = 44; // modificado alex
 
     vidas = 3;
 
@@ -18,6 +19,7 @@ var vidas;
 var cartas = [];
 var numParejas = 2;
 var nivel = 1;
+
 
 
 function pedirDatos() {
