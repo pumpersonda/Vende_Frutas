@@ -71,7 +71,7 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#text-card").append(descipcion);
+        $(htmlCarta).find("#text-card").append("<img id="+concepto+" src='../img/"+descipcion+"' class='fruits-image'>");
         $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
@@ -166,10 +166,10 @@ function ocultarSeleccionados() {
 }
 
 /*function sumarPuntos(puntos) {
-    var puntaje = parseInt($("#puntaje").val());
-    puntaje = puntaje + puntos;
-    $("#puntaje").val(puntaje);
-}*/
+ var puntaje = parseInt($("#puntaje").val());
+ puntaje = puntaje + puntos;
+ $("#puntaje").val(puntaje);
+ }*/
 
 function sacarCartas(parejasSeleccionada) {
     for (var i = 0, max = parejasSeleccionada.length; i < max; i++) {

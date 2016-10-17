@@ -1,40 +1,24 @@
 {
   "sum": [
     {
-      "concepto": "1",
-      "descripcion": "1"
+      "concepto": "1/2",
+      "descripcion": "naranja.png"
     },
     {
-      "concepto": "2",
-      "descripcion": "2"
+      "concepto": "3/6",
+      "descripcion": "kiwi.png"
     },
     {
-      "concepto": "3",
-      "descripcion": "3"
+      "concepto": "1/3",
+      "descripcion": "pitaya.png"
     },
     {
-      "concepto": "4",
-      "descripcion": "4"
+      "concepto": "1/4",
+      "descripcion": "mamey.png"
     },
     {
-      "concepto": "5",
-      "descripcion": "5"
-    },
-    {
-      "concepto": "6",
-      "descripcion": "6"
-    },
-    {
-      "concepto": "7",
-      "descripcion": "7"
-    },
-    {
-      "concepto": "8",
-      "descripcion": "8"
-    },
-    {
-      "concepto": "9",
-      "descripcion": "9"
+      "concepto": "1/8",
+      "descripcion": "sandia.png"
     }
   ],
   "rest":[
