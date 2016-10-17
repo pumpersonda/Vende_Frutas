@@ -6,13 +6,15 @@ $(document).ready(function () {
 
     vidas = 3;
     pedirDatos();
+    var time = initTime;
+    iniciarContador(time);
 
 });
 var vidas;
 var cartas = [];
-var numParejas = 6;
+var numParejas = 2;
 var nivel = 1;
-
+var initTime = 2;
 
 function pedirDatos() {
     var operation = {"operation": undefined};
@@ -71,7 +73,7 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#text-card").append("<img id="+concepto+" src='../img/"+descipcion+"' class='fruits-image'>");
+        $(htmlCarta).find("#text-card").append("<img id=" + concepto + " src='../img/" + descipcion + "' class='fruits-image'>");
         $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
@@ -99,6 +101,40 @@ function asignarListeners(carta) {
 
     });
 }
+
+var intervaloContador;
+
+function iniciarContador(time) {
+    $("#timer").text(time);
+    intervaloContador = setInterval(function () {
+        var tiempoDecr = parseInt($("#timer").text());
+
+        tiempoDecr = tiempoDecr - 1;
+        if (tiempoDecr === 100) {
+            $("#timer").removeClass("buen-initTime").addClass("poco-initTime");
+        }
+        if (tiempoDecr === 0) {
+            clearInterval(intervaloContador);
+            deleteLife();
+            reloadTimer();
+            return;
+        }
+
+        $('#timer').text(tiempoDecr);
+
+    }, 1000);
+}
+
+
+function reloadTimer() {
+    if (vidas === 0) {
+        validateLevel();
+    } else {
+        var time = initTime;
+        iniciarContador(time);
+    }
+}
+
 
 function confirmarRespuesta(respuesta, caso) {
     var divResultado = $("#resultado");
@@ -275,7 +311,7 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
         allowOutsideClick: false,
         allowEscapeKey: false,
         showConfirmButton: true,
-        showCloseButton: true,
+        showCloseButton: false,
         showCancelButton: true,
         confirmButtonText: buttonMessage,
         cancelButtonText: "Regresar al menu principal"
