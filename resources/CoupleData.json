@@ -5,7 +5,7 @@
       "descripcion": "naranja.png"
     },
     {
-      "concepto": "3/6",
+      "concepto": "4/6",
       "descripcion": "kiwi.png"
     },
     {
@@ -17,8 +17,12 @@
       "descripcion": "mamey.png"
     },
     {
-      "concepto": "1/8",
+      "concepto": "5/8",
       "descripcion": "sandia.png"
+    },
+    {
+      "concepto":"7/10",
+      "descripcion":"limon.png"
     }
   ],
   "rest":[
