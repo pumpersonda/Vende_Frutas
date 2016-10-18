@@ -1,25 +1,61 @@
 $(document).ready(function () {
-    var currentTime= 45; //modificado alex
+    var currentTime= 44; //modificado alex
+    var audio = document.getElementById('sound');
+    var audio_good = document.getElementById('good');
+    var audio_wrong = document.getElementById('wrong');
 
     $("#pregunta-correctos").hide();
     $("#puntaje").val("0");
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
-    document.getElementById('sound').currentTime = 44; // modificado alex
+
+
+    audio.currentTime = currentTime; // modificado alex INICIO
+
+    audio.onended = function(){
+            audio.currentTime= 44;
+            audio.play();
+    };
+
+    audio_wrong.onended = function(){
+        audio.play();
+    };
+
+    audio_good.onended = function(){
+        audio.play();
+    }                               // Alex modifico FIN
 
     vidas = 3;
-
-
     pedirDatos();
-
-
-
 });
+
 var vidas;
 var cartas = [];
 var numParejas = 2;
 var nivel = 1;
 
+
+/*******************ALEX*************
+$('.volumeon').click(function (e){
+    e.preventDefault();
+    $('.volumeon').removeClass('visible');
+    $('.mute').removeClass('hidden');
+    $('.mute').addClass('visible');
+    $('.volumeon').addClass('hidden');
+    song.volume=0;
+    
+})
+
+$('.mute').click(function (e){
+    e.preventDefault();
+    $('.volumeon').removeClass('hidden');
+    $('.mute').removeClass('visible');
+    $('.mute').addClass('hidden');
+    $('.volumeon').addClass('visible');
+    song.volume=1;
+    
+})
+******************************************/
 
 
 function pedirDatos() {
@@ -110,18 +146,28 @@ function asignarListeners(carta) {
 
 function confirmarRespuesta(respuesta, caso) {
     var divResultado = $("#resultado");
+    var audio = document.getElementById('sound'); /*Modifico alex*/
+    var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
+    var audio_good = document.getElementById('good');/*Alex modifico*/
     divResultado.removeClass();
 
 
     $("#pregunta-correctos").hide(500);
 
     if (respuesta) {
-        console.log("Correcto");
+        audio.pause();
+        audio_good.play()/*Alex modifico */
+        console.log("Correcto");/*Alex modifico*/
         divResultado.text("Correcto");
         divResultado.show(1000);
         divResultado.toggleClass("alert alert-success", true);
+        
+
 
     } else {
+
+        audio.pause();  /* Alex modifico */
+        audio_wrong.play(); /* Alex modifico*/
         console.log("Inorrecto");
         divResultado.text("Incorrecto");
         divResultado.show(1000);
