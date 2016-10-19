@@ -36,7 +36,7 @@ var vidas;
 var cartas = [];
 var numParejas = 2;
 var nivel = 1;
-var initTime = 11;
+var initTime = 2;
 
 /*******************ALEX*************
 $('.volumeon').click(function (e){
@@ -178,6 +178,8 @@ function stopTime() {
 function reloadTimer() {
     if (vidas === 0) {
         validateLevel();
+    }else{
+        iniciarContador(initTime);
     }
 }
 
