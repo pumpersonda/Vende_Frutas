@@ -6,15 +6,14 @@ $(document).ready(function () {
 
     vidas = 3;
     pedirDatos();
-    var time = initTime;
-    iniciarContador(time);
+
 
 });
 var vidas;
 var cartas = [];
 var numParejas = 2;
 var nivel = 1;
-var initTime = 2;
+var initTime = 11;
 
 function pedirDatos() {
     var operation = {"operation": undefined};
@@ -45,6 +44,8 @@ function pedirDatos() {
         datos = revolver(datos);
         procesarDatos(datos);
     });
+
+    iniciarContador(initTime);
 }
 
 
@@ -125,13 +126,12 @@ function iniciarContador(time) {
     }, 1000);
 }
 
-
+function stopTime() {
+    clearInterval(intervaloContador)
+}
 function reloadTimer() {
     if (vidas === 0) {
         validateLevel();
-    } else {
-        var time = initTime;
-        iniciarContador(time);
     }
 }
 
@@ -144,13 +144,13 @@ function confirmarRespuesta(respuesta, caso) {
     $("#pregunta-correctos").hide(500);
 
     if (respuesta) {
-        console.log("Correcto");
+        //console.log("Correcto");
         divResultado.text("Correcto");
         divResultado.show(1000);
         divResultado.toggleClass("alert alert-success", true);
 
     } else {
-        console.log("Inorrecto");
+        //console.log("Inorrecto");
         divResultado.text("Incorrecto");
         divResultado.show(1000);
         divResultado.toggleClass("alert alert-danger", true);
@@ -288,9 +288,10 @@ function validateLevel() {
             isLevelPerfect = true;
         }
         isLevelSuccess = true;
+        stopTime();
     }
 
-    var message = "Tu puntaje en el juego ha sido de " + $("#puntaje").val() + " puntos";
+    var message = "Nivel Terminado! :D";
 
 
     if (isLevelSuccess === true) {
@@ -324,7 +325,6 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
             nextLevel();
 
         } else {
-            reloadPage();
             pedirDatos();
         }
 
@@ -356,13 +356,9 @@ function nextLevel() {
 
 }
 
-function reloadPage() {
-    location.reload();
-}
 
 function deleteOldCards() {
-    var a = $("#tablero").find("div").remove();
-    console.log(a);
+    $("#tablero").find("div").remove();
 }
 
 
