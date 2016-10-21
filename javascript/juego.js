@@ -36,7 +36,7 @@ var vidas;
 var cartas = [];
 var numParejas = 2;
 var nivel = 1;
-var initTime = 2;
+var initTime = 10;
 
 /*******************ALEX*************
 $('.volumeon').click(function (e){
@@ -197,7 +197,7 @@ function confirmarRespuesta(respuesta, caso) {
     if (respuesta) {
 
         //console.log("Correcto");
-        audio.pause();
+        //audio.pause();
         audio_good.play();/*Alex modifico */
         divResultado.text("Correcto");
         divResultado.show(1000);
@@ -207,7 +207,8 @@ function confirmarRespuesta(respuesta, caso) {
 
     } else {
 
-
+        //audio.pause();
+        audio_wrong.play();/*Alex modifico */
         divResultado.text("Incorrecto");
         divResultado.show(1000);
         divResultado.toggleClass("alert alert-danger", true);
@@ -383,6 +384,7 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
 
         } else {
             pedirDatos();
+            reloadPage();
         }
 
     }, function (dismiss) {
@@ -393,6 +395,10 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
 
 }
 
+//Cuando pierdes y le das reiniciar
+function reloadPage() {
+    location.reload();
+}
 
 function showAlertExtraLife() {
     swal({
