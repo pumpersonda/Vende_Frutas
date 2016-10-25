@@ -48,20 +48,21 @@ body {
 }
 
 .tablero-color {
-    padding: 0;
     position: relative;
-    margin-top: 10%;
+    margin-top: 14%;
     background: transparent;
-    border: solid 5px black;
+    border: solid 5px transparent;
     border-radius: 20px;
 }
 
 .padding-carta {
-    padding: 3px;
+    padding: 1%;
+    padding-right: 8%;
+
 }
 
 .carta {
-    width: 15%; // Tamaño de las "cartas" y se alinean
+    width: 16%; /* Tamaño de las "cartas" y se alinean*/
     transform-style: preserve-3d;
     transition: transform 1s;
 }
@@ -76,8 +77,9 @@ body {
 }
 
 .atras {
-// border: double;
-    width: 90%;
+/* border: double;*/
+    padding: 10px;
+    width: 50%;
     position: absolute;
     border-radius: 20px;
     text-align: center;
@@ -198,13 +200,14 @@ body {
 }
 
 body {
+
     background: url("../img/fondo.png") no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 680px;
 
 }
 
 aside {
-    padding-top: 15%;
+    padding-top: 0;
 }
 
 footer {
@@ -214,7 +217,16 @@ footer {
 .fruits-image {
 
     position: relative;
-    margin-top: -30px;
+    margin-top: -10px;
     width: 70%;
     height: 70%;
+}
+
+.panel #nombre-nivel {
+    margin-top: -6%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 140%;
+    color:white;
+    background-color: #4ebef2;
 }

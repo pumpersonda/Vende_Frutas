@@ -36,51 +36,53 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 </head>
 <body class="padding-juego">
 
-<aside class="col-sm-2">
-    <div id="resultado"></div>
-    <div class="col-sm-12 text-center speech" id="pregunta-correctos">
-        <div>
-            <h2>¿Son equivalentes los pesos de las bolsas?</h2>
-        </div>
-
-        <div>
-            <h3>
-                <button id="respuesta-si" class="btn btn-success">Si</button>
-                <button id="respuesta-no" class="btn btn-danger">No</button>
-            </h3>
-        </div>
-
-    </div>
-
-</aside>
-
-
-<main class="col-sm-9 tablero-color">
-
-
-    <div id="tablero" class=""></div>
-</main>
-
-<footer class=" col-md-offset-4 col-sm-5">
-    <div class="panel panel-custom">
-        <div class="panel-heading panel-custom-head">
-            <h2 id="nombre-nivel">Jugador 1</h2>
-        </div>
-
-        <div id="tablero_puntaje" class="panel-body">
-            <label for="timer">Tiempo</label>
-            <div class="text-center">
-                <h1 id="timer" class="buen-tiempo">Reloj</h1>
+    <aside class="col-sm-2">
+        <div id="resultado"></div>
+        <div class="col-sm-12 text-center speech" id="pregunta-correctos">
+            <div>
+                <h2>¿Son equivalentes los pesos de las bolsas?</h2>
             </div>
-            <div id="life" class="text-center"></div>
+
+            <div>
+                <h3>
+                    <button id="respuesta-si" class="btn btn-success">Si</button>
+                    <button id="respuesta-no" class="btn btn-danger">No</button>
+                </h3>
+            </div>
 
         </div>
-    </div>
-</footer>
 
-<audio src="../resources/audio/background_sound.mp3" autoplay  id="sound"></audio></audio> <!--modificado alex-->
-<audio id="wrong" src="../resources/audio/wrong_asnwer.mp3" ></audio> <!-- modificado alex -->
-<audio id="good" src="../resources/audio/good_answer.mp3" ></audio>
+    </aside>
+
+
+    <main class="col-sm-offset-0 col-sm-9 tablero-color">
+
+
+        <div id="tablero" class=""></div>
+    </main>
+
+    <footer class=" col-md-offset-4 col-sm-3">
+        <div class="panel panel-custom">
+            <div>
+                <h2 id="nombre-nivel">Jugador 1</h2>
+            </div>
+
+            <div id="tablero_puntaje" class="panel-body">
+                <label for="timer">Tiempo</label>
+                <div class="text-center">
+                    <h1 id="timer" class="buen-tiempo">Reloj</h1>
+                </div>
+                <div id="life" class="text-center"></div>
+
+            </div>
+        </div>
+    </footer>
+
+    <audio src="../resources/audio/background_sound.mp3" autoplay id="sound"></audio>
+    </audio> <!--modificado alex-->
+    <audio id="wrong" src="../resources/audio/wrong_asnwer.mp3"></audio> <!-- modificado alex -->
+    <audio id="good" src="../resources/audio/good_answer.mp3"></audio>
+
 </body>
 
 </html>

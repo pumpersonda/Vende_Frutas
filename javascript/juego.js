@@ -36,7 +36,7 @@ var vidas;
 var cartas = [];
 var numParejas = 6;
 var nivel = 1;
-var initTime = 100;
+var initTime = 50;
 
 /*******************ALEX*************
 $('.volumeon').click(function (e){
@@ -349,7 +349,7 @@ function validateLevel() {
         stopTime();
     }
 
-    var message = "Nivel Terminado! :D";
+    var message = "Nivel Terminado!";
 
 
     if (isLevelSuccess === true) {
@@ -383,6 +383,7 @@ function showAlertMessage(message, isLevelSuccess, isLevelPerfect, type, buttonM
             nextLevel();
 
         } else {
+            stopTime();
             pedirDatos();
             reloadPage();
         }
