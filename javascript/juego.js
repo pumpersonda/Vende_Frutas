@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var currentTime= 44; //modificado alex
+    var currentTime= 0; //modificado alex
     var audio = document.getElementById('sound');
     var audio_good = document.getElementById('good');
     var audio_wrong = document.getElementById('wrong');
@@ -349,7 +349,7 @@ function validateLevel() {
         stopTime();
     }
 
-    var message = "Nivel Terminado!";
+    var message = "";
 
 
     if (isLevelSuccess === true) {
