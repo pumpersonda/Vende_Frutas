@@ -36,7 +36,7 @@ var vidas;
 var cartas = [];
 var numParejas = 6;
 var nivel = 1;
-var initTime = 50;
+var initTime = 100;
 
 /*******************ALEX*************
 $('.volumeon').click(function (e){
@@ -120,7 +120,7 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#text-card").append("<img id=" + concepto + " src='../img/" + descipcion + "' class='fruits-image'>");
+        $(htmlCarta).find("#text-card").append("<img id=" + concepto + " src='../img/fruits/" + descipcion + "' class='fruits-image'>");
         $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
@@ -152,13 +152,15 @@ function asignarListeners(carta) {
 var intervaloContador;
 
 function iniciarContador(time) {
+     $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
     $("#timer").text(time);
     intervaloContador = setInterval(function () {
         var tiempoDecr = parseInt($("#timer").text());
 
         tiempoDecr = tiempoDecr - 1;
-        if (tiempoDecr === 100) {
-            $("#timer").removeClass("buen-initTime").addClass("poco-initTime");
+
+        if (tiempoDecr === 30) {
+            $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
         }
         if (tiempoDecr === 0) {
             clearInterval(intervaloContador);
@@ -442,7 +444,7 @@ function setLife() {
     for (var i = 0; i < vidas; i++) {
         (function (currentImage) {
             var nameId = "lifePoints" + currentImage;
-            $("#life").append("<img id=" + nameId + " class='padding-carta'>");
+            $("#life").append("<img id=" + nameId + " class='padding-life'>");
             $("#lifePoints" + currentImage).attr("src", "../img/life.png");
         })(i);
     }

@@ -48,6 +48,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         background-color: transparent;
     }
 
+    .padding-life{
+        padding: 4px;
+        margin: 2px;
+        background-color: transparent;
+    }
     .tablero-color {
         position: relative;
         margin-top: 14%;
@@ -56,11 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         border-radius: 20px;
     }
 
-    .padding-carta {
-        padding: 1%;
-        padding-right: 8%;
-
-    }
+    
 
     .carta {
         width: 16%; /* Tamaño de las "cartas" y se alinean*/
@@ -69,22 +70,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     }
 
     .carta div {
-        backface-visibility: hidden;
+        backface-visibility: true;
         -webkit-backface-visibility: hidden;
     }
 
     .frente {
+        padding: 0 30px 30px 30px;
         transform: rotateY(0deg);
     }
 
     .atras {
+
         /* border: double;*/
-        padding: 10px;
-        width: 50%;
+        padding: 0 50px 50px 50px;
+        margin-bottom: 20px;
+        width: 100%;
         position: absolute;
         border-radius: 20px;
         text-align: center;
         transform: rotateY(180deg);
+    }
+
+    
+    main{
+
     }
 
     .flipped {
@@ -107,7 +116,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         width: 0;
         height: 0;
         left: 100%;
-        top: 140px;
+        top: 35px;
         border: 25px solid;
         border-color: transparent transparent #000000 #000000;
     }
@@ -118,7 +127,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         width: 0;
         height: 0;
         left: 100%;
-        top: 145px;
+        top: 40px;
         border: 21px solid;
         border-color: transparent transparent #fff #fff;
     }
@@ -130,10 +139,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     .panel-custom {
         background: white;
         border: solid #4ebef2;
+        width: 70%;
+        height: 100%;
+
     }
 
     .panel-custom-head {
-        background: #4ebef2;
+        background: white;
         color: white;
 
     }
@@ -187,6 +199,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     }
 
     #text-card {
+        color: black;
+        font-size: 50px;
         position: relative;
         /*top: 50px;*/
         bottom: 100px;
@@ -230,10 +244,25 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         width: 200%;
     }
     .panel #nombre-nivel {
-        margin-top: -6%;
+        margin-top: -1%;
         padding-top: 5%;
         padding-bottom: 5%;
         font-size: 140%;
         color:white;
         background-color: #4ebef2;
+    }
+
+    #resultado{
+        margin-top: 150%;
+
+    }
+
+    .buen-tiempo{
+        margin-top: 0px;
+        color: #388e3c;
+    }
+
+    .poco-tiempo{
+        margin-top: 0px;
+        color: #dd2c00;
     }

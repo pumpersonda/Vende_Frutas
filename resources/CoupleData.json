@@ -5,7 +5,7 @@
       "descripcion": "naranja.png"
     },
     {
-      "concepto": "4/6",
+      "concepto": "1/6",
       "descripcion": "kiwi.png"
     },
     {
@@ -17,50 +17,50 @@
       "descripcion": "mamey.png"
     },
     {
-      "concepto": "5/8",
+      "concepto": "3/4",
       "descripcion": "sandia.png"
     },
     {
-      "concepto":"4/10",
+      "concepto":"2/5",
       "descripcion":"limon.png"
     }
   ],
   "rest":[
     {
-      "concepto": "-1",
-      "descripcion": "-1"
+      "concepto": "3/5",
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-2",
-      "descripcion": "-2"
+     "descripcion": "grosella.png"
     },
     {
       "concepto": "-3",
-      "descripcion": "-3"
+     "descripcion": "grosella.png"
     },
     {
       "concepto": "-4",
-      "descripcion": "-4"
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-5",
-      "descripcion": "-5"
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-6",
-      "descripcion": "-6"
+     "descripcion": "grosella.png"
     },
     {
       "concepto": "-7",
-      "descripcion": "-7"
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-8",
-      "descripcion": "-8"
+     "descripcion": "grosella.png"
     },
     {
       "concepto": "-9",
-      "descripcion": "-9"
+      "descripcion": "grosella.png"
     }
   ]
 }
