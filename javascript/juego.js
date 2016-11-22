@@ -62,20 +62,21 @@ $('.mute').click(function (e){
 
 
 function pedirDatos() {
-    var operation = {"operation": undefined};
-    switch (nivel) {
-        case 1:
+    if(nivel===2){
+        showGameOver();
+    }else{
+        var operation = {"operation": undefined};
+        switch (nivel) {
+            case 1:
             operation.operation = "sum";
             break;
-        case 2:
+            case 2:
             operation.operation = "rest";
             break;
-        case 3:
-            operation.operation = "mul";
-            break;
-    }
-    $.get("../core/php/DataManager.php", operation).done(function (data) {
-        if (!data) {
+
+        }
+        $.get("../core/php/DataManager.php", operation).done(function (data) {
+            if (!data) {
             //No hay datos
             salirJuego();
         }
@@ -91,7 +92,8 @@ function pedirDatos() {
         procesarDatos(datos);
     });
 
-    iniciarContador(initTime);
+        iniciarContador(initTime);
+    }
 }
 
 
@@ -152,26 +154,26 @@ function asignarListeners(carta) {
 var intervaloContador;
 
 function iniciarContador(time) {
-     $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
-    $("#timer").text(time);
-    intervaloContador = setInterval(function () {
-        var tiempoDecr = parseInt($("#timer").text());
+ $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
+ $("#timer").text(time);
+ intervaloContador = setInterval(function () {
+    var tiempoDecr = parseInt($("#timer").text());
 
-        tiempoDecr = tiempoDecr - 1;
+    tiempoDecr = tiempoDecr - 1;
 
-        if (tiempoDecr === 30) {
-            $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
-        }
-        if (tiempoDecr === 0) {
-            clearInterval(intervaloContador);
-            deleteLife();
-            reloadTimer();
-            return;
-        }
+    if (tiempoDecr === 30) {
+        $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
+    }
+    if (tiempoDecr === 0) {
+        clearInterval(intervaloContador);
+        deleteLife();
+        reloadTimer();
+        return;
+    }
 
-        $('#timer').text(tiempoDecr);
+    $('#timer').text(tiempoDecr);
 
-    }, 1000);
+}, 1000);
 }
 
 function stopTime() {
@@ -225,21 +227,21 @@ function confirmarRespuesta(respuesta, caso) {
      * 4-> Respuesta y conceptos NO iguales: Acertado
      */
 
-    switch (caso) {
+     switch (caso) {
         case 1:
-            sacarCartas(parejaSeleccionada);
-            break;
+        sacarCartas(parejaSeleccionada);
+        break;
         case 2:
-            ocultarSeleccionados();
-            deleteLife();
-            break;
+        ocultarSeleccionados();
+        deleteLife();
+        break;
         case 3:
-            ocultarSeleccionados();
-            deleteLife();
-            break;
+        ocultarSeleccionados();
+        deleteLife();
+        break;
         case 4:
-            ocultarSeleccionados();
-            break;
+        ocultarSeleccionados();
+        break;
 
 
     }
@@ -265,7 +267,7 @@ function ocultarSeleccionados() {
  var puntaje = parseInt($("#puntaje").val());
  puntaje = puntaje + puntos;
  $("#puntaje").val(puntaje);
- }*/
+}*/
 
 function sacarCartas(parejasSeleccionada) {
     for (var i = 0, max = parejasSeleccionada.length; i < max; i++) {
@@ -409,6 +411,33 @@ function showAlertExtraLife() {
         text: 'Haz ganado una vida extra',
         imageUrl: '../img/heart.png',
         animation: false
+    });
+}
+
+function showGameOver(){
+    swal({
+        title: 'Game Over',
+        text: 'Felicidades!! Terminaste el juego',
+        imageUrl: '../img/trophy.png',
+        animation: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: true,
+        showCloseButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Reiniciar",
+        cancelButtonText: "Regresar al menu principal"
+    }).then(function () {
+
+        stopTime();
+        pedirDatos();
+        reloadPage();
+        
+
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+            location.href = './menu.html';
+        }
     });
 }
 
