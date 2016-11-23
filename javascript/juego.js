@@ -102,6 +102,8 @@ function procesarDatos(datos) {
     setLife(vidas);
 }
 
+//Lugar donde hay que verificar como se crean
+
 function crearCartas(concepto, descipcion, indice) {
     //cargamos la carta y le inyectamos los el concepto
     $.get("../sections/carta.html", function (data) {
@@ -183,9 +185,9 @@ function reloadTimer() {
     }
 }
 
-
+/*************Copiar y pegar este *************/
 function confirmarRespuesta(respuesta, caso) {
-    var divResultado = $("#resultado");
+    var divResultado = $("#pop");
     var audio = document.getElementById('sound'); /*Modifico alex*/
     var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
     var audio_good = document.getElementById('good');/*Alex modifico*/
@@ -199,19 +201,20 @@ function confirmarRespuesta(respuesta, caso) {
         //console.log("Correcto");
         //audio.pause();
         audio_good.play();/*Alex modifico */
+        divResultado.css("background-color", "lightgreen");
         divResultado.text("Correcto");
-        divResultado.show(1000);
-        divResultado.toggleClass("alert alert-success", true);
-        
-
+        divResultado.fadeToggle(100);
+        divResultado.fadeToggle(3000);
 
     } else {
 
         //audio.pause();
         audio_wrong.play();/*Alex modifico */
+
+        divResultado.css("background-color", "red");
         divResultado.text("Incorrecto");
-        divResultado.show(1000);
-        divResultado.toggleClass("alert alert-danger", true);
+        divResultado.show(2000);
+        divResultado.hide(4000);
     }
 
 
@@ -252,6 +255,9 @@ function confirmarRespuesta(respuesta, caso) {
 
     parejaSeleccionada = [];
 }
+/********************************/
+
+
 
 function ocultarSeleccionados() {
     for (i = 0; i < parejaSeleccionada.length; i++) {
