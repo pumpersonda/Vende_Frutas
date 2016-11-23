@@ -20,287 +20,292 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : Eduardo
     */
 
-    @font-face {
-        font-family: Raleway;
-        src: url(../resources/fonts/Raleway-Medium.ttf);
+@font-face {
+    font-family: Raleway;
+    src: url(../resources/fonts/Raleway-Medium.ttf);
+}
+
+@font-face {
+    font-family: Mario;
+    src: url(../resources/fonts/Mario.ttf);
+}
+
+@font-face {
+    font-family: Halo;
+    src: url(../resources/fonts/Halo.ttf);
+}
+
+@font-face {
+    font-family: Arkanoid;
+    src: url(../resources/fonts/iomanoid.ttf);
+}
+
+body {
+    font-family: Raleway;
+    background: #02ce6c;
+}
+
+@media screen and (min-width: 1300px) {
+    p {
+        font-size: 1em;
     }
+}
 
-    @font-face{
-        font-family: Mario;
-        src: url(../resources/fonts/Mario.ttf);
+@media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
+    p {
+        font-size: .5em;
     }
+}
 
-    @font-face{
-        font-family: Halo;
-        src: url(../resources/fonts/Halo.ttf);
-    }
+.padding-juego {
+    padding: 10px;
+    margin: 10px;
+    background-color: transparent;
+}
 
-    @font-face{
-        font-family: Arkanoid;
-        src: url(../resources/fonts/iomanoid.ttf);
-    }
+.padding-life {
+    padding: 4px;
+    margin: 2px;
+    background-color: transparent;
+}
 
-    body {
-        font-family:Raleway ;
-        background: #02ce6c;
-    }
+.tablero-color {
+    position: relative;
+    margin-top: 14%;
+    background: transparent;
+    border: solid 5px transparent;
+    border-radius: 20px;
+}
 
-    @media screen and (min-width: 1300px) {
-        p {
-            font-size: 1em;
-        }
-    }
+.carta {
+    width: 16%; /* Tamaño de las "cartas" y se alinean*/
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
 
-    @media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
-        p {
-            font-size: .5em;
-        }
-    }
+.carta div {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
 
-    .padding-juego {
-        padding: 10px;
-        margin: 10px;
-        background-color: transparent;
-    }
+.frente {
+    padding: 0 30px 30px 30px;
+    transform: rotateY(0deg);
+}
 
-    .tablero-color {
-        position: relative;
-        margin-top: 14%;
-        background: transparent;
-        border: solid 5px transparent;
-        border-radius: 20px;
-    }
+.atras {
 
-    
+    /* border: double;*/
+    padding: 0 50px 50px 50px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    transform: rotateY(180deg);
+}
 
-    .carta {
-        width: 16%; /* Tamaño de las "cartas" y se alinean*/
-        transform-style: preserve-3d;
-        transition: transform 1s;
-    }
+.flipped {
+    transition: transform 1s;
+    transform: rotateY(180deg);
+}
 
-    .carta div {
-        backface-visibility: true;
-        -webkit-backface-visibility: hidden;
-    }
+#pregunta-correctos {
+    position: absolute;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #fcf9ff;
+    border: #000000 solid 4px;
+    border-radius: 20px;
+}
 
-    .frente {
-        padding: 0 30px 30px 30px;
-        transform: rotateY(0deg);
-    }
+#pregunta-correctos:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 35px;
+    border: 25px solid;
+    border-color: transparent transparent #000000 #000000;
+}
 
-    .atras {
+#pregunta-correctos:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 40px;
+    border: 21px solid;
+    border-color: transparent transparent #fff #fff;
+}
 
-        /* border: double;*/
-        padding: 0 50px 50px 50px;
-        margin-bottom: 20px;
-        width: 100%;
-        position: absolute;
-        border-radius: 20px;
-        text-align: center;
-        transform: rotateY(180deg);
-    }
+#tablero_puntaje input {
+    font-size: larger;
+}
 
+.panel-custom {
+    background: white;
+    border: solid #4ebef2;
+    width: 70%;
+    height: 100%;
 
-    .flipped {
-        transition: transform 1s;
-        transform: rotateY(180deg);
-    }
+}
 
-    #pregunta-correctos {
-        position: absolute;
-        margin-bottom: 5px;
-        padding: 5px;
-        background-color: #fcf9ff;
-        border: #000000 solid 4px;
-        border-radius: 20px;
-    }
+.panel-custom-head {
+    background: white;
+    color: white;
 
-    #pregunta-correctos:before {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 100%;
-        top: 140px;
-        border: 25px solid;
-        border-color: transparent transparent #000000 #000000;
-    }
+}
 
-    #pregunta-correctos:after {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 100%;
-        top: 145px;
-        border: 21px solid;
-        border-color: transparent transparent #fff #fff;
-    }
+#respuesta-si {
+    background-color: #388e3c;
+    border-color: #388e3c;
+}
 
-    #tablero_puntaje input {
-        font-size: larger;
-    }
+#respuesta-no {
+    background-color: #dd2c00;
+    border-color: #dd2c00;
+}
 
-    .panel-custom {
-        background: white;
-        border: solid #4ebef2;
-    }
+.modal-header {
+    text-align: center;
+    background-color: #CFD8DC;
+    border-color: #CFD8DC;
+}
 
-    .panel-custom-head {
-        background: #4ebef2;
-        color: white;
+.modal-footer {
+    background-color: #4ebef2;
+    border-color: #4ebef2;
+}
 
-    }
+#respuesta-si {
+    color: whitesmoke;
+    background: #4CAF50;
+}
 
-    #respuesta-si {
-        background-color: #388e3c;
-        border-color: #388e3c;
-    }
+#respuesta-no {
+    color: whitesmoke;
+    background: #E91E63;
+}
 
-    #respuesta-no {
-        background-color: #dd2c00;
-        border-color: #dd2c00;
-    }
+.btn {
+    color: #000;
+    background: #CFD8DC;
+    border: #CFD8DC;
+}
 
-    .modal-header {
-        text-align: center;
-        background-color: #CFD8DC;
-        border-color: #CFD8DC;
-    }
+.btn:hover {
+    color: #000;
+    background: #4ebef2;
+    border: #4ebef2;
+}
 
-    .modal-footer {
-        background-color: #4ebef2;
-        border-color: #4ebef2;
-    }
+#response-card {
+    position: relative;
+    width: 100%; /* for IE 6 */
+}
 
-    #respuesta-si {
-        color: whitesmoke;
-        background: #4CAF50;
-    }
+#text-card {
+    color: black;
+    font-size: 50px;
+    position: relative;
+    margin-top: 45px;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+}
 
-    #respuesta-no {
-        color: whitesmoke;
-        background: #E91E63;
-    }
+#img-correct {
+    position: absolute;
+    top: 50px;
+    left: 55px;
+}
 
-    .btn {
-        color: #000;
-        background: #CFD8DC;
-        border: #CFD8DC;
-    }
+html {
+    overflow: hidden;
+    background: url("../img/fondo.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
 
-    .btn:hover {
-        color: #000;
-        background: #4ebef2;
-        border: #4ebef2;
-    }
+}
 
-    #response-card {
-        position: relative;
-        width: 100%; /* for IE 6 */
-    }
+aside {
+    padding-top: 0;
+}
 
-    #text-card {
-        position: relative;
-        margin-top: 45px;
-        bottom: 100px;
-        left: 0;
-        width: 100%;
-    }
+footer {
+    padding-top: 2%;
+}
 
-    #img-correct {
-        position: absolute;
-        top: 50px;
-        left: 55px;
-    }
+.fruits-image {
+    position: relative;
+    margin-top: -10px;
+    width: 70%;
+    height: 70%;
+    transition: all 1s ease;
+}
 
-    html {
-        overflow:hidden;
-        background: url("../img/fondo.png") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: 100% 100%;
+.fruits-image:hover {
+    height: 200%;
+    width: 200%;
 
-    }
+}
 
-    aside {
-        padding-top: 0;
-    }
+.panel #nombre-nivel {
+    margin-top: -1%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 140%;
+    color: white;
+    background-color: #4ebef2;
+}
 
-    footer {
-        padding-top: 2%;
-    }
-
-    .fruits-image {
-        position: relative;
-        margin-top: -10px;
-        width: 70%;
-        height: 70%;
-        transition: all 1s ease;
-    }
-    .fruits-image:hover{
-        height:200%;
-        width: 200%;
-
-    }
-    .panel #nombre-nivel {
-        margin-top: -6%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        font-size: 140%;
-        color:white;
-        background-color: #4ebef2;
-    }
-
-    #resultado{
-        float: right;
-    }
 /*************Copiar y pegar****************************/
-    #pop{
-        display: none;
-        position: absolute;
-        text-align: center;
-        margin-left: 825px;
-        width: 200px;
-       
-        
-        border-width: 2px;
-        border-style: solid;
-        border-color: black;
-        box-shadow: 3px 3px 3px black;
-        padding: 10px;
-    }
+#pop {
+    display: none;
+    position: absolute;
+    text-align: center;
+    margin-left: 825px;
+    width: 200px;
 
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    box-shadow: 3px 3px 3px black;
+    padding: 10px;
+}
 
-    #pop:before{
-        content: ' ';
-        position: absolute;
-        width: 5px;
-        height: 30px;
-        right: 74%;
-        top: 100%;
-        border: 25px solid;
-        border-radius: 50px 50px 80px 35px ;
-        border-color: #000 transparent transparent #000;
-        transform: rotateZ(180deg);
-    }
+#pop:before {
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    right: 74%;
+    top: 100%;
+    border: 25px solid;
+    border-radius: 50px 50px 80px 35px;
+    border-color: #000 transparent transparent #000;
+    transform: rotateZ(180deg);
+}
 
-    #pop:after{
-        content: ' ';
-        position: absolute;
-        width: 5px;
-        height:30px;
-        right: 74%;
-       top: 100%;
-        border: 21px solid;
-        border-radius: 50px 0 0 0 ;
-        border-color: #fff transparent  transparent #fff;
-        transform: rotateZ(180deg);
-    }
+#pop:after {
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    right: 74%;
+    top: 100%;
+    border: 21px solid;
+    border-radius: 50px 0 0 0;
+    border-color: #fff transparent transparent #fff;
+    transform: rotateZ(180deg);
+}
 
-    div[tipo="definicion"] h3{
+div[tipo="definicion"] h3 {
 
     border: 3px skyblue solid;
     border-radius: 80px;
@@ -309,4 +314,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 
 /**************************************/
+
+.buen-tiempo {
+    margin-top: 0px;
+    color: #388e3c;
+}
+
+.poco-tiempo {
+    margin-top: 0px;
+    color: #dd2c00;
+}
 
