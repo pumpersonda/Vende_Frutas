@@ -187,11 +187,12 @@ function reloadTimer() {
 
 /*************Copiar y pegar este *************/
 function confirmarRespuesta(respuesta, caso) {
-    var divResultado = $("#pop");
+    var corResultado = $("#correct_answer");
+    var wrongResultado = $("#wrong_answer");
     var audio = document.getElementById('sound'); /*Modifico alex*/
     var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
     var audio_good = document.getElementById('good');/*Alex modifico*/
-    divResultado.removeClass();
+    
 
 
     $("#pregunta-correctos").hide(500);
@@ -201,23 +202,25 @@ function confirmarRespuesta(respuesta, caso) {
         //console.log("Correcto");
         //audio.pause();
         audio_good.play();/*Alex modifico */
-        divResultado.css("background-color", "lightgreen");
-        divResultado.text("Correcto");
-        divResultado.fadeToggle(100);
-        divResultado.fadeToggle(3000);
+        corResultado.css("background-color", "lightgreen");
+
+
+        corResultado.text("Correcto");
+        corResultado.fadeToggle(100);
+        corResultado.fadeToggle(3000);
 
     } else {
 
         //audio.pause();
         audio_wrong.play();/*Alex modifico */
 
-        divResultado.css("background-color", "red");
-        divResultado.text("Incorrecto");
-        divResultado.show(2000);
-        divResultado.hide(4000);
+        wrongResultado.css("background-color", "red");
+        wrongResultado.text("Incorrecto");
+        wrongResultado.fadeToggle(2000);
+        wrongResultado.fadeToggle(4000);
     }
 
-
+/*****************************************************/
     /*
      * Casos:
      * 1-> Respuesta y conceptos iguales: Acertado
