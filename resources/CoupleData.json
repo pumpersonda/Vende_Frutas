@@ -1,42 +1,42 @@
 {
-  "sum": [
+  "level1": [
     {
       "concepto": "1/2",
       "descripcion": "naranja.png"
     },
     {
-      "concepto": "1/6",
+      "concepto": "5/6",
       "descripcion": "kiwi.png"
     },
     {
-      "concepto": "1/3",
+      "concepto": "2/3",
       "descripcion": "pitaya.png"
     },
     {
-      "concepto": "1/4",
+      "concepto": "3/4",
       "descripcion": "mamey.png"
     },
     {
-      "concepto": "3/4",
+      "concepto": "1/4",
       "descripcion": "sandia.png"
     },
     {
-      "concepto":"2/5",
-      "descripcion":"limon.png"
+      "concepto": "3/5",
+      "descripcion": "limon.png"
     }
   ],
-  "rest":[
+  "level2": [
     {
       "concepto": "3/5",
       "descripcion": "grosella.png"
     },
     {
-      "concepto": "-2",
-     "descripcion": "grosella.png"
+      "concepto": "3/8",
+      "descripcion": "sandia2.png"
     },
     {
-      "concepto": "-3",
-     "descripcion": "grosella.png"
+      "concepto": "4/5",
+      "descripcion": "fresa.png"
     },
     {
       "concepto": "-4",
@@ -48,7 +48,7 @@
     },
     {
       "concepto": "-6",
-     "descripcion": "grosella.png"
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-7",
@@ -56,7 +56,45 @@
     },
     {
       "concepto": "-8",
-     "descripcion": "grosella.png"
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-9",
+      "descripcion": "grosella.png"
+    }
+  ],
+  "level3": [
+    {
+      "concepto": "1/2",
+      "descripcion": "sandia3.png"
+    },
+    {
+      "concepto": "3/8",
+      "descripcion": "sandia2.png"
+    },
+    {
+      "concepto": "-3",
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-4",
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-5",
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-6",
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-7",
+      "descripcion": "grosella.png"
+    },
+    {
+      "concepto": "-8",
+      "descripcion": "grosella.png"
     },
     {
       "concepto": "-9",

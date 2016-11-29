@@ -62,16 +62,16 @@ $('.mute').click(function (e){
 
 
 function pedirDatos() {
-    if(nivel===2){
+    if(nivel===3){
         showGameOver();
     }else{
         var operation = {"operation": undefined};
         switch (nivel) {
             case 1:
-            operation.operation = "sum";
+            operation.operation = "level1";
             break;
             case 2:
-            operation.operation = "rest";
+            operation.operation = "level2";
             break;
 
         }
