@@ -251,6 +251,23 @@ footer {
 
 }
 
+#resultado {
+    float: right;
+}
+
+/*************Copiar y pegar****************************/
+#correct_answer {
+    border-radius: 4px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    margin-left: 825px;
+    width: 200px;
+    border-color: black;
+
+    padding: 10px;
+}
+
 .panel #nombre-nivel {
     margin-top: -6%;
     padding-top: 5%;
@@ -260,7 +277,7 @@ footer {
     background-color: #4ebef2;
 }
 
-#resultado{
+#resultado {
     float: right;
 }
 
@@ -310,6 +327,103 @@ div[tipo="definicion"] h3 {
     border: 3px skyblue solid;
     border-radius: 80px;
     background-color: lightyellow;
+
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+#correct_answer:before {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* value = - border-top-width - border-bottom-width */
+    left: 45px; /* controls horizontal position */
+    border: 0;
+    border-right-width: 45px; /* vary this value to change the angle of the vertex */
+    border-bottom-width: 20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :after */
+    border-style: solid;
+    transform: rotateY(180deg);
+
+    border-color: transparent lightgreen;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+
+}
+
+#correct_answer:after {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* value = - border-top-width - border-bottom-width */
+    left: 45px; /* value = (:before's left) + (:before's border-right/left-width)  - (:after's border-right/left-width) */
+    border: 0;
+    border-right-width: 15px; /* vary this value to change the angle of the vertex */
+    border-bottom-width: 20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :before */
+    border-style: solid;
+    transform: rotateY(180deg);
+    border-color: transparent #86e9eb;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+
+}
+
+#wrong_answer {
+    border-radius: 4px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    margin-left: 825px;
+    width: 200px;
+    border-color: black;
+
+    padding: 10px;
+}
+
+div[tipo="definicion"] h3 {
+> > > > > > > alex border: 3 px skyblue solid;
+    border-radius: 80px;
+    background-color: lightyellow;
+
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+/* creates the wider right-angled triangle */
+#wrong_answer:before {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* value = - border-top-width - border-bottom-width */
+    left: 45px; /* controls horizontal position */
+    border: 0;
+    border-right-width: 45px; /* vary this value to change the angle of the vertex */
+    border-bottom-width: 20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :after */
+    border-style: solid;
+    transform: rotateY(180deg);
+
+    border-color: transparent red;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
+
+}
+
+/* creates the narrower right-angled triangle */
+#wrong_answer:after {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* value = - border-top-width - border-bottom-width */
+    left: 45px; /* value = (:before's left) + (:before's border-right/left-width)  - (:after's border-right/left-width) */
+    border: 0;
+    border-right-width: 15px; /* vary this value to change the angle of the vertex */
+    border-bottom-width: 20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :before */
+    border-style: solid;
+    transform: rotateY(180deg);
+    border-color: transparent #86e9eb;
+    /* reduce the damage in FF3.0 */
+    display: block;
+    width: 0;
 
 }
 
