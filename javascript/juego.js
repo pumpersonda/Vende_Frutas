@@ -46,7 +46,7 @@ $('.volumeon').click(function (e){
     $('.mute').addClass('visible');
     $('.volumeon').addClass('hidden');
     song.volume=0;
-    
+
 })
 
 $('.mute').click(function (e){
@@ -56,7 +56,7 @@ $('.mute').click(function (e){
     $('.mute').addClass('hidden');
     $('.volumeon').addClass('visible');
     song.volume=1;
-    
+
 })
 ******************************************/
 
@@ -65,13 +65,17 @@ function pedirDatos() {
     if(nivel===3){
         showGameOver();
     }else{
-        var operation = {"operation": undefined};
+        var operation = {"level": undefined};
         switch (nivel) {
             case 1:
-            operation.operation = "level1";
+            $("html").addClass("nivel1");
+            operation.level = "level1";
             break;
             case 2:
-            operation.operation = "level2";
+            $("html").addClass("nivel2");
+            operation.level = "level2";
+
+
             break;
 
         }
@@ -196,7 +200,7 @@ function confirmarRespuesta(respuesta, caso) {
     var audio = document.getElementById('sound'); /*Modifico alex*/
     var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
     var audio_good = document.getElementById('good');/*Alex modifico*/
-    
+
 
 
     $("#pregunta-correctos").hide(500);
@@ -441,7 +445,7 @@ function showGameOver(){
         stopTime();
         pedirDatos();
         reloadPage();
-        
+
 
     }, function (dismiss) {
         if (dismiss === 'cancel') {

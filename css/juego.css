@@ -1,3 +1,4 @@
+
 /*
 Copyright (C) 2016 Eduardo
 
@@ -15,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-/* 
+/*
     Created on : 9/04/2016, 11:39:58 AM
     Author     : Eduardo
     */
@@ -219,14 +220,31 @@ body {
     left: 55px;
 }
 
-html {
-    overflow: hidden;
-    background: url("../img/fondo.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100% 100%;
+.nivel1{
+  overflow: hidden;
+  background: url("../img/market1.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% 100%;
+}
 
+.nivel2{
+  overflow: hidden;
+  background: url("../img/market2.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% 100%;
+}
+
+.nivel3{
+  overflow: hidden;
+  background: url("../img/market3.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% 100%;
 }
 
 aside {
@@ -381,7 +399,7 @@ div[tipo="definicion"] h3 {
 }
 
 div[tipo="definicion"] h3 {
-> > > > > > > alex border: 3 px skyblue solid;
+    border: 3 px skyblue solid;
     border-radius: 80px;
     background-color: lightyellow;
 
@@ -438,4 +456,3 @@ div[tipo="definicion"] h3 {
     margin-top: 0px;
     color: #dd2c00;
 }
-
