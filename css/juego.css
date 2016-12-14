@@ -26,19 +26,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     }
 
     @font-face{
-        font-family: Mario;
-        src: url(../resources/fonts/Mario.ttf);
+        font-family: Reem;
+        src: url(../resources/fonts/ReemKufi-Regular.ttf);
     }
 
-    @font-face{
-        font-family: Halo;
-        src: url(../resources/fonts/Halo.ttf);
-    }
+   
 
-    @font-face{
-        font-family: Arkanoid;
-        src: url(../resources/fonts/iomanoid.ttf);
-    }
 
     body {
         font-family:Raleway ;
@@ -62,6 +55,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         margin: 10px;
         background-color: transparent;
     }
+
+
 
     .tablero-color {
         position: relative;
@@ -257,32 +252,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     #resultado{
         float: right;
     }
-/*************Copiar y pegar****************************/
-    #correct_answer{
-        border-radius: 4px;
-        display: none;
-        position: absolute;
-        text-align: center;
-        margin-left: 825px;
-        width: 200px;
-        border-color: black;
-        
-        padding: 10px;
-    }
-
-
-
-
-    div[tipo="definicion"] h3{
-
-    border: 3px skyblue solid;
-    border-radius: 80px;
-    background-color: lightyellow;
-
-}
-
-
-
 
 
 
@@ -291,116 +260,69 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ------------------------------------------------------------------------------------------------------------------------------- */
 
 
-#correct_answer:before {
-  content:"";
-  position:absolute;
-  bottom:-20px; /* value = - border-top-width - border-bottom-width */
-  left:45px; /* controls horizontal position */
-  border:0;
-  border-right-width:45px; /* vary this value to change the angle of the vertex */
-  border-bottom-width:20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :after */
-  border-style:solid;
-  transform: rotateY(180deg);
 
-  border-color:transparent lightgreen;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-  
+
+
+
+/*********Modifico ALex 10/12/2016****************/
+
+   #correct_answer{
+        font-family: Reem;
+        font-size: 3em;
+        font-weight: bold;
+        border-radius: 40px;
+        display: none;
+        position: absolute;
+        text-align: center;
+        margin-left: 825px;
+        width: 200px;
+        border-width: 10px;
+        border-style: double;
+        border-color: forestgreen;
+        
+        padding: 10px;
+    }
+
+    #correct_answer:before{
+        content: url('../img/correct.png');
+    }
+
+div[tipo="definicion"] h3{
+
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 3px skyblue solid;
+    border-radius: 80px;
+    background-color: lightyellow;
+
 }
 
-
-#correct_answer:after {
-  content:"";
-  position:absolute;
-  bottom:-20px; /* value = - border-top-width - border-bottom-width */
-  left:45px; /* value = (:before's left) + (:before's border-right/left-width)  - (:after's border-right/left-width) */
-  border:0;
-  border-right-width:15px; /* vary this value to change the angle of the vertex */
-  border-bottom-width:20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :before */
-  border-style:solid;
-  transform: rotateY(180deg);
-  border-color:transparent #86e9eb ;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-
-}
 
 
 #wrong_answer{
-        border-radius: 4px;
+
+        font-family: Reem;
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 30px;
         display: none;
         position: absolute;
         text-align: center;
         margin-left: 825px;
         width: 200px;
-        border-color: black;
+        border-width: 10px;
+        border-style: double;
+        border-color: darkred;
         
         padding: 10px;
     }
 
+    #wrong_answer:before{
+        content: url('../img/incorrect.png');
+    }
 
+  #timer{
+        font-family: Reem;
+    }
 
-
-    div[tipo="definicion"] h3{
-
-    border: 3px skyblue solid;
-    border-radius: 80px;
-    background-color: lightyellow;
-
-}
-
-
-
-
-
-
-
-/* THE TRIANGLE
-------------------------------------------------------------------------------------------------------------------------------- */
-
-/* creates the wider right-angled triangle */
-#wrong_answer:before {
-  content:"";
-  position:absolute;
-  bottom:-20px; /* value = - border-top-width - border-bottom-width */
-  left:45px; /* controls horizontal position */
-  border:0;
-  border-right-width:45px; /* vary this value to change the angle of the vertex */
-  border-bottom-width:20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :after */
-  border-style:solid;
-  transform: rotateY(180deg);
-
-  border-color:transparent red;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-  
-}
-
-/* creates the narrower right-angled triangle */
-#wrong_answer:after {
-  content:"";
-  position:absolute;
-  bottom:-20px; /* value = - border-top-width - border-bottom-width */
-  left:45px; /* value = (:before's left) + (:before's border-right/left-width)  - (:after's border-right/left-width) */
-  border:0;
-  border-right-width:15px; /* vary this value to change the angle of the vertex */
-  border-bottom-width:20px; /* vary this value to change the height of the triangle. must be equal to the corresponding value in :before */
-  border-style:solid;
-  transform: rotateY(180deg);
-  border-color:transparent #86e9eb ;
-  /* reduce the damage in FF3.0 */
-  display:block;
-  width:0;
-
-}
-
-
-
-
-
-
-/**************************************/
-
+/***************************/

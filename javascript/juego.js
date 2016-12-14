@@ -214,7 +214,7 @@ function confirmarRespuesta(respuesta, caso) {
         //audio.pause();
         audio_wrong.play();/*Alex modifico */
 
-        wrongResultado.css("background-color", "red");
+        wrongResultado.css("background-color", "#F6CECE");
         wrongResultado.text("Incorrecto");
         wrongResultado.fadeToggle(2000);
         wrongResultado.fadeToggle(4000);
