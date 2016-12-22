@@ -36,7 +36,7 @@ var vidas;
 var cartas = [];
 var numParejas = 6;
 var nivel = 1;
-var initTime = 50;
+var initTime = 100;
 
 /*******************ALEX*************
 $('.volumeon').click(function (e){
@@ -46,7 +46,7 @@ $('.volumeon').click(function (e){
     $('.mute').addClass('visible');
     $('.volumeon').addClass('hidden');
     song.volume=0;
-    
+
 })
 
 $('.mute').click(function (e){
@@ -56,26 +56,31 @@ $('.mute').click(function (e){
     $('.mute').addClass('hidden');
     $('.volumeon').addClass('visible');
     song.volume=1;
-    
+
 })
 ******************************************/
 
 
 function pedirDatos() {
-    var operation = {"operation": undefined};
-    switch (nivel) {
-        case 1:
-            operation.operation = "sum";
+    if(nivel===3){
+        showGameOver();
+    }else{
+        var operation = {"level": undefined};
+        switch (nivel) {
+            case 1:
+            $("html").addClass("nivel1");
+            operation.level = "level1";
             break;
-        case 2:
-            operation.operation = "rest";
+            case 2:
+            $("html").addClass("nivel2");
+            operation.level = "level2";
+
+
             break;
-        case 3:
-            operation.operation = "mul";
-            break;
-    }
-    $.get("../core/php/DataManager.php", operation).done(function (data) {
-        if (!data) {
+
+        }
+        $.get("../core/php/DataManager.php", operation).done(function (data) {
+            if (!data) {
             //No hay datos
             salirJuego();
         }
@@ -91,7 +96,8 @@ function pedirDatos() {
         procesarDatos(datos);
     });
 
-    iniciarContador(initTime);
+        iniciarContador(initTime);
+    }
 }
 
 
@@ -122,7 +128,7 @@ function crearCartas(concepto, descipcion, indice) {
         var htmlCarta = $.parseHTML(data);
         $(htmlCarta).attr("id", indice + concepto);
         $(htmlCarta).attr("tipo", "concepto");
-        $(htmlCarta).find("#text-card").append("<img id=" + concepto + " src='../img/" + descipcion + "' class='fruits-image'>");
+        $(htmlCarta).find("#text-card").append("<img id=" + concepto + " src='../img/fruits/" + descipcion + "' class='fruits-image'>");
         $(htmlCarta).find("#img-correct").hide();
         $(htmlCarta).find("#response-card").show();
         $(htmlCarta).find("#imagen-carta").attr("src", "../img/fish-bag.png");
@@ -154,24 +160,26 @@ function asignarListeners(carta) {
 var intervaloContador;
 
 function iniciarContador(time) {
-    $("#timer").text(time);
-    intervaloContador = setInterval(function () {
-        var tiempoDecr = parseInt($("#timer").text());
+ $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
+ $("#timer").text(time);
+ intervaloContador = setInterval(function () {
+    var tiempoDecr = parseInt($("#timer").text());
 
-        tiempoDecr = tiempoDecr - 1;
-        if (tiempoDecr === 100) {
-            $("#timer").removeClass("buen-initTime").addClass("poco-initTime");
-        }
-        if (tiempoDecr === 0) {
-            clearInterval(intervaloContador);
-            deleteLife();
-            reloadTimer();
-            return;
-        }
+    tiempoDecr = tiempoDecr - 1;
 
-        $('#timer').text(tiempoDecr);
+    if (tiempoDecr === 30) {
+        $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
+    }
+    if (tiempoDecr === 0) {
+        clearInterval(intervaloContador);
+        deleteLife();
+        reloadTimer();
+        return;
+    }
 
-    }, 1000);
+    $('#timer').text(tiempoDecr);
+
+}, 1000);
 }
 
 function stopTime() {
@@ -192,7 +200,7 @@ function confirmarRespuesta(respuesta, caso) {
     var audio = document.getElementById('sound'); /*Modifico alex*/
     var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
     var audio_good = document.getElementById('good');/*Alex modifico*/
-    
+
 
 
     $("#pregunta-correctos").hide(500);
@@ -203,19 +211,14 @@ function confirmarRespuesta(respuesta, caso) {
         //audio.pause();
         audio_good.play();/*Alex modifico */
         corResultado.css("background-color", "lightgreen");
-
-
-        corResultado.text("Correcto");
         corResultado.fadeToggle(100);
         corResultado.fadeToggle(3000);
-
     } else {
 
         //audio.pause();
         audio_wrong.play();/*Alex modifico */
 
         wrongResultado.css("background-color", "#F6CECE");
-        wrongResultado.text("Incorrecto");
         wrongResultado.fadeToggle(2000);
         wrongResultado.fadeToggle(4000);
     }
@@ -229,21 +232,21 @@ function confirmarRespuesta(respuesta, caso) {
      * 4-> Respuesta y conceptos NO iguales: Acertado
      */
 
-    switch (caso) {
+     switch (caso) {
         case 1:
-            sacarCartas(parejaSeleccionada);
-            break;
+        sacarCartas(parejaSeleccionada);
+        break;
         case 2:
-            ocultarSeleccionados();
-            deleteLife();
-            break;
+        ocultarSeleccionados();
+        deleteLife();
+        break;
         case 3:
-            ocultarSeleccionados();
-            deleteLife();
-            break;
+        ocultarSeleccionados();
+        deleteLife();
+        break;
         case 4:
-            ocultarSeleccionados();
-            break;
+        ocultarSeleccionados();
+        break;
 
 
     }
@@ -272,7 +275,7 @@ function ocultarSeleccionados() {
  var puntaje = parseInt($("#puntaje").val());
  puntaje = puntaje + puntos;
  $("#puntaje").val(puntaje);
- }*/
+}*/
 
 function sacarCartas(parejasSeleccionada) {
     for (var i = 0, max = parejasSeleccionada.length; i < max; i++) {
@@ -419,6 +422,33 @@ function showAlertExtraLife() {
     });
 }
 
+function showGameOver(){
+    swal({
+        title: 'Game Over',
+        text: 'Felicidades!! Terminaste el juego',
+        imageUrl: '../img/trophy.png',
+        animation: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: true,
+        showCloseButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Reiniciar",
+        cancelButtonText: "Regresar al menu principal"
+    }).then(function () {
+
+        stopTime();
+        pedirDatos();
+        reloadPage();
+
+
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+            location.href = './menu.html';
+        }
+    });
+}
+
 
 function nextLevel() {
     nivel++;
@@ -451,7 +481,7 @@ function setLife() {
     for (var i = 0; i < vidas; i++) {
         (function (currentImage) {
             var nameId = "lifePoints" + currentImage;
-            $("#life").append("<img id=" + nameId + " class='padding-carta'>");
+            $("#life").append("<img id=" + nameId + " class='padding-life'>");
             $("#lifePoints" + currentImage).attr("src", "../img/life.png");
         })(i);
     }

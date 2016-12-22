@@ -6,7 +6,7 @@
  * Time: 12:45 PM
  */
 require_once("FileReader.php");
-$operation = $_GET["operation"];
+$operation = $_GET["level"];
 
 $configFileName = "../../resources/CoupleData.json";
 

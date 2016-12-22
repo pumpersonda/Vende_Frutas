@@ -15,265 +15,349 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-/* 
+/*
     Created on : 9/04/2016, 11:39:58 AM
     Author     : Eduardo
     */
 
-    @font-face {
-        font-family: Raleway;
-        src: url(../resources/fonts/Raleway-Medium.ttf);
+@font-face {
+    font-family: Raleway;
+    src: url(../resources/fonts/Raleway-Medium.ttf);
+}
+
+@font-face {
+    font-family: Reem;
+    src: url(../resources/fonts/ReemKufi-Regular.ttf);
+}
+
+@font-face {
+    font-family: Arkanoid;
+    src: url(../resources/fonts/iomanoid.ttf);
+}
+
+body {
+    font-family: Raleway;
+    background: #02ce6c;
+}
+
+@media screen and (min-width: 1300px) {
+    p {
+        font-size: 1em;
     }
+}
 
-    @font-face{
-        font-family: Reem;
-        src: url(../resources/fonts/ReemKufi-Regular.ttf);
+@media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
+    p {
+        font-size: .5em;
     }
+}
 
-   
+.padding-juego {
+    padding: 10px;
+    margin: 10px;
+    background-color: transparent;
+}
+
+.tablero-color {
+    position: relative;
+    margin-top: 14%;
+    background: transparent;
+    border: solid 5px transparent;
+    border-radius: 20px;
+}
+
+.padding-life {
+    padding: 4px;
+    margin: 2px;
+    background-color: transparent;
+}
+
+.tablero-color {
+    position: relative;
+    margin-top: 14%;
+    background: transparent;
+    border: solid 5px transparent;
+    border-radius: 20px;
+}
+
+.carta {
+    width: 16%; /* Tamaño de las "cartas" y se alinean*/
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.carta div {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.frente {
+    padding: 0 30px 30px 30px;
+    transform: rotateY(0deg);
+}
+
+.atras {
+
+    /* border: double;*/
+    padding: 0 50px 50px 50px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.flipped {
+    transition: transform 1s;
+    transform: rotateY(180deg);
+}
+
+#pregunta-correctos {
+    position: absolute;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #fcf9ff;
+    border: #000000 solid 4px;
+    border-radius: 20px;
+}
+
+#pregunta-correctos:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 140px;
+    border: 25px solid;
+    border-color: transparent transparent #000000 #000000;
+}
+
+#pregunta-correctos:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 145px;
+    border: 21px solid;
+    border-color: transparent transparent #fff #fff;
+}
+
+#tablero_puntaje input {
+    font-size: larger;
+}
+
+.panel-custom {
+    background: white;
+    border: solid #4ebef2;
+
+}
+
+.panel-custom-head {
+    background: #4ebef2;;
+    color: white;
+
+}
+
+#respuesta-si {
+    background-color: #388e3c;
+    border-color: #388e3c;
+}
+
+#respuesta-no {
+    background-color: #dd2c00;
+    border-color: #dd2c00;
+}
+
+.modal-header {
+    text-align: center;
+    background-color: #CFD8DC;
+    border-color: #CFD8DC;
+}
+
+.modal-footer {
+    background-color: #4ebef2;
+    border-color: #4ebef2;
+}
+
+#respuesta-si {
+    color: whitesmoke;
+    background: #4CAF50;
+}
+
+#respuesta-no {
+    color: whitesmoke;
+    background: #E91E63;
+}
+
+.btn {
+    color: #000;
+    background: #CFD8DC;
+    border: #CFD8DC;
+}
+
+.btn:hover {
+    color: #000;
+    background: #4ebef2;
+    border: #4ebef2;
+}
+
+#response-card {
+    position: relative;
+    width: 100%; /* for IE 6 */
+}
+
+#text-card {
+    position: relative;
+    margin-top: 45px;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+}
+
+#img-correct {
+    position: absolute;
+    top: 50px;
+    left: 55px;
+}
+
+.nivel1 {
+    overflow: hidden;
+    background: url("../img/market1.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
+}
+
+.nivel2 {
+    overflow: hidden;
+    background: url("../img/market2.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
+}
+
+.nivel3 {
+    overflow: hidden;
+    background: url("../img/market3.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
+}
+
+aside {
+    padding-top: 0;
+}
+
+footer {
+    padding-top: 2%;
+}
+
+.fruits-image {
+    position: relative;
+    margin-top: -10px;
+    width: 70%;
+    height: 70%;
+    transition: all 1s ease;
+}
+
+.fruits-image:hover {
+    height: 200%;
+    width: 200%;
+
+}
+
+#resultado {
+    float: right;
+}
+
+/*************Copiar y pegar****************************/
 
 
-    body {
-        font-family:Raleway ;
-        background: #02ce6c;
-    }
+.panel #nombre-nivel {
+    margin-top: -6%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 140%;
+    color: white;
+    background-color: #4ebef2;
+}
 
-    @media screen and (min-width: 1300px) {
-        p {
-            font-size: 1em;
-        }
-    }
+#resultado {
+    float: right;
+}
 
-    @media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
-        p {
-            font-size: .5em;
-        }
-    }
+/*************Copiar y pegar****************************/
+#pop {
+    display: none;
+    position: absolute;
+    text-align: center;
+    margin-left: 825px;
+    width: 200px;
 
-    .padding-juego {
-        padding: 10px;
-        margin: 10px;
-        background-color: transparent;
-    }
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    box-shadow: 3px 3px 3px black;
+    padding: 10px;
+}
 
+#pop:before {
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    right: 74%;
+    top: 100%;
+    border: 25px solid;
+    border-radius: 50px 50px 80px 35px;
+    border-color: #000 transparent transparent #000;
+    transform: rotateZ(180deg);
+}
 
+#pop:after {
+    content: ' ';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    right: 74%;
+    top: 100%;
+    border: 21px solid;
+    border-radius: 50px 0 0 0;
+    border-color: #fff transparent transparent #fff;
+    transform: rotateZ(180deg);
+}
 
-    .tablero-color {
-        position: relative;
-        margin-top: 14%;
-        background: transparent;
-        border: solid 5px transparent;
-        border-radius: 20px;
-    }
+#resultado {
+    float: right;
+}
 
-    
+div[tipo="definicion"] h3 {
 
-    .carta {
-        width: 16%; /* Tamaño de las "cartas" y se alinean*/
-        transform-style: preserve-3d;
-        transition: transform 1s;
-    }
+    border: 3px skyblue solid;
+    border-radius: 80px;
+    background-color: lightyellow;
 
-    .carta div {
-        backface-visibility: true;
-        -webkit-backface-visibility: hidden;
-    }
-
-    .frente {
-        padding: 0 30px 30px 30px;
-        transform: rotateY(0deg);
-    }
-
-    .atras {
-
-        /* border: double;*/
-        padding: 0 50px 50px 50px;
-        margin-bottom: 20px;
-        width: 100%;
-        position: absolute;
-        border-radius: 20px;
-        text-align: center;
-        transform: rotateY(180deg);
-    }
-
-
-    .flipped {
-        transition: transform 1s;
-        transform: rotateY(180deg);
-    }
-
-    #pregunta-correctos {
-        position: absolute;
-        margin-bottom: 5px;
-        padding: 5px;
-        background-color: #fcf9ff;
-        border: #000000 solid 4px;
-        border-radius: 20px;
-    }
-
-    #pregunta-correctos:before {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 100%;
-        top: 140px;
-        border: 25px solid;
-        border-color: transparent transparent #000000 #000000;
-    }
-
-    #pregunta-correctos:after {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 100%;
-        top: 145px;
-        border: 21px solid;
-        border-color: transparent transparent #fff #fff;
-    }
-
-    #tablero_puntaje input {
-        font-size: larger;
-    }
-
-    .panel-custom {
-        background: white;
-        border: solid #4ebef2;
-    }
-
-    .panel-custom-head {
-        background: #4ebef2;
-        color: white;
-
-    }
-
-    #respuesta-si {
-        background-color: #388e3c;
-        border-color: #388e3c;
-    }
-
-    #respuesta-no {
-        background-color: #dd2c00;
-        border-color: #dd2c00;
-    }
-
-    .modal-header {
-        text-align: center;
-        background-color: #CFD8DC;
-        border-color: #CFD8DC;
-    }
-
-    .modal-footer {
-        background-color: #4ebef2;
-        border-color: #4ebef2;
-    }
-
-    #respuesta-si {
-        color: whitesmoke;
-        background: #4CAF50;
-    }
-
-    #respuesta-no {
-        color: whitesmoke;
-        background: #E91E63;
-    }
-
-    .btn {
-        color: #000;
-        background: #CFD8DC;
-        border: #CFD8DC;
-    }
-
-    .btn:hover {
-        color: #000;
-        background: #4ebef2;
-        border: #4ebef2;
-    }
-
-    #response-card {
-        position: relative;
-        width: 100%; /* for IE 6 */
-    }
-
-    #text-card {
-        position: relative;
-        margin-top: 45px;
-        bottom: 100px;
-        left: 0;
-        width: 100%;
-    }
-
-    #img-correct {
-        position: absolute;
-        top: 50px;
-        left: 55px;
-    }
-
-    html {
-        overflow:hidden;
-        background: url("../img/fondo.png") no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: 100% 100%;
-
-    }
-
-    aside {
-        padding-top: 0;
-    }
-
-    footer {
-        padding-top: 2%;
-    }
-
-    .fruits-image {
-        position: relative;
-        margin-top: -10px;
-        width: 70%;
-        height: 70%;
-        transition: all 1s ease;
-    }
-    .fruits-image:hover{
-        height:200%;
-        width: 200%;
-
-    }
-    .panel #nombre-nivel {
-        margin-top: -6%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        font-size: 140%;
-        color:white;
-        background-color: #4ebef2;
-    }
-
-    #resultado{
-        float: right;
-    }
-
-
-
+}
 
 /* THE TRIANGLE
 ------------------------------------------------------------------------------------------------------------------------------- */
 
-
-
-
-
-
 /*********Modifico ALex 10/12/2016****************/
 
-   #correct_answer{
+
+
+ #correct_answer{
         font-family: Reem;
         font-size: 3em;
         font-weight: bold;
         border-radius: 40px;
         display: none;
         position: absolute;
-        text-align: center;
         margin-left: 825px;
         width: 200px;
         border-width: 10px;
@@ -283,31 +367,50 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         padding: 10px;
     }
 
-    #correct_answer:before{
-        content: url('../img/correct.png');
+
+
+    #correct_answer:after{
+        content: " ";
+        position: absolute;
+        right: 100%;
+        border-width:  0 0 5px 5px;
+        padding: 0 0 15px 15px;
+        border-style: solid;
+        border-color: forestgreen;
+        transform: rotateZ(45deg);
+        bottom: 30%;
+
     }
 
-div[tipo="definicion"] h3{
+    #correct_answer img, #wrong_answer img{
+        margin: auto auto auto 45px;
+    }
 
-    font-size: 1.2em;
-    font-weight: bold;
-    border: 3px skyblue solid;
-    border-radius: 80px;
-    background-color: lightyellow;
+    #correct_answer p, #wrong_answer p{
+        text-align: center;
+    }
 
-}
+    #wrong_answer:after{
+        content: " ";
+        position: absolute;
+        right: 100%;
+        border-width:  0 0 5px 5px;
+        padding: 0 0 15px 15px;
+        border-style: solid;
+        border-color: darkred;
+        transform: rotateZ(45deg);
+        bottom: 30%;
 
+    }
 
-
-#wrong_answer{
+    #wrong_answer{
 
         font-family: Reem;
-        font-size: 2em;
+        font-size: 3em;
         font-weight: bold;
         border-radius: 30px;
         display: none;
         position: absolute;
-        text-align: center;
         margin-left: 825px;
         width: 200px;
         border-width: 10px;
@@ -317,12 +420,30 @@ div[tipo="definicion"] h3{
         padding: 10px;
     }
 
-    #wrong_answer:before{
-        content: url('../img/incorrect.png');
-    }
 
-  #timer{
-        font-family: Reem;
-    }
+div[tipo="definicion"] h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 3px skyblue solid;
+    border-radius: 80px;
+    background-color: lightyellow;
+}
+
+.buen-tiempo {
+    margin-top: 0px;
+    color: #388e3c;
+}
+
+.poco-tiempo {
+    margin-top: 0px;
+    color: #dd2c00;
+}
+
+
+
+#timer {
+    font-family: Reem;
+}
 
 /***************************/
+
