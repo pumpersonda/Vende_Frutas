@@ -276,17 +276,7 @@ footer {
 }
 
 /*************Copiar y pegar****************************/
-#correct_answer {
-    border-radius: 4px;
-    display: none;
-    position: absolute;
-    text-align: center;
-    margin-left: 825px;
-    width: 200px;
-    border-color: black;
 
-    padding: 10px;
-}
 
 .panel #nombre-nivel {
     margin-top: -6%;
@@ -359,14 +349,13 @@ div[tipo="definicion"] h3 {
 
 /*********Modifico ALex 10/12/2016****************/
 
-#correct_answer {
+#correct_answer{
     font-family: Reem;
     font-size: 3em;
     font-weight: bold;
     border-radius: 40px;
     display: none;
     position: absolute;
-    text-align: center;
     margin-left: 825px;
     width: 200px;
     border-width: 10px;
@@ -376,9 +365,59 @@ div[tipo="definicion"] h3 {
     padding: 10px;
 }
 
-#correct_answer:before {
-    content: url('../img/correct.png');
+
+
+#correct_answer:after{
+    content: " ";
+    position: absolute;
+    right: 100%;
+    border-width:  0 0 5px 5px;
+    padding: 0 0 15px 15px;
+    border-style: solid;
+    border-color: forestgreen;
+    transform: rotateZ(45deg);
+    bottom: 30%;
+
 }
+
+#correct_answer img, #wrong_answer img{
+    margin: auto auto auto 45px;
+}
+
+#correct_answer p, #wrong_answer p{
+    text-align: center;
+}
+
+#wrong_answer:after{
+    content: " ";
+    position: absolute;
+    right: 100%;
+    border-width:  0 0 5px 5px;
+    padding: 0 0 15px 15px;
+    border-style: solid;
+    border-color: darkred;
+    transform: rotateZ(45deg);
+    bottom: 30%;
+
+}
+
+#wrong_answer{
+
+    font-family: Reem;
+    font-size: 3em;
+    font-weight: bold;
+    border-radius: 30px;
+    display: none;
+    position: absolute;
+    margin-left: 825px;
+    width: 200px;
+    border-width: 10px;
+    border-style: double;
+    border-color: darkred;
+
+    padding: 10px;
+}
+
 
 div[tipo="definicion"] h3 {
     font-size: 1.2em;
@@ -396,28 +435,6 @@ div[tipo="definicion"] h3 {
 .poco-tiempo {
     margin-top: 0px;
     color: #dd2c00;
-}
-
-#wrong_answer {
-
-    font-family: Reem;
-    font-size: 3em;
-    font-weight: bold;
-    border-radius: 30px;
-    display: none;
-    position: absolute;
-    text-align: center;
-    margin-left: 825px;
-    width: 200px;
-    border-width: 10px;
-    border-style: double;
-    border-color: darkred;
-
-    padding: 10px;
-}
-
-#wrong_answer:before {
-    content: url('../img/incorrect.png');
 }
 
 #timer {
