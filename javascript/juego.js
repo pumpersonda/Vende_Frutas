@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var currentTime= 0; //modificado alex
+    var currentTime = 0; //modificado alex
     var audio = document.getElementById('sound');
     var audio_good = document.getElementById('good');
     var audio_wrong = document.getElementById('wrong');
@@ -16,17 +16,17 @@ $(document).ready(function () {
 
     audio.currentTime = currentTime; // modificado alex INICIO
 
-    audio.onended = function(){
-        audio.currentTime= 44;
+    audio.onended = function () {
+        audio.currentTime = 44;
         audio.play();
     };
 
-    audio_wrong.onended = function(){
+    audio_wrong.onended = function () {
         audio.play();
     };
 
 
-    audio_good.onended = function(){
+    audio_good.onended = function () {
         audio.play();
     }
 
@@ -36,10 +36,10 @@ var vidas;
 var cartas = [];
 var numParejas = 6;
 var nivel = 1;
-var initTime = 100;
+var initTime = 200;
 
 /*******************ALEX*************
-$('.volumeon').click(function (e){
+ $('.volumeon').click(function (e){
     e.preventDefault();
     $('.volumeon').removeClass('visible');
     $('.mute').removeClass('hidden');
@@ -49,7 +49,7 @@ $('.volumeon').click(function (e){
 
 })
 
-$('.mute').click(function (e){
+ $('.mute').click(function (e){
     e.preventDefault();
     $('.volumeon').removeClass('hidden');
     $('.mute').removeClass('visible');
@@ -58,43 +58,45 @@ $('.mute').click(function (e){
     song.volume=1;
 
 })
-******************************************/
+ ******************************************/
 
 
 function pedirDatos() {
-    if(nivel===3){
+    if (nivel === 4) {
         showGameOver();
-    }else{
+    } else {
         var operation = {"level": undefined};
         switch (nivel) {
             case 1:
-            $("html").addClass("nivel1");
-            operation.level = "level1";
-            break;
+                $("html").addClass("nivel1");
+                operation.level = "level1";
+                break;
             case 2:
-            $("html").addClass("nivel2");
-            operation.level = "level2";
-
-
-            break;
+                $("html").addClass("nivel2");
+                operation.level = "level2";
+                break;
+            case 3:
+                $("html").addClass("nivel3");
+                operation.level = "level3";
+                break;
 
         }
         $.get("../core/php/DataManager.php", operation).done(function (data) {
             if (!data) {
-            //No hay datos
-            salirJuego();
-        }
+                //No hay datos
+                salirJuego();
+            }
 
-        var datos = $.parseJSON(data);
-        console.log(data);
+            var datos = $.parseJSON(data);
+            console.log(data);
 
-        if (datos.length < numParejas) {
-            //datos incompletos
-            salirJuego();
-        }
-        datos = revolver(datos);
-        procesarDatos(datos);
-    });
+            if (datos.length < numParejas) {
+                //datos incompletos
+                salirJuego();
+            }
+            datos = revolver(datos);
+            procesarDatos(datos);
+        });
 
         iniciarContador(initTime);
     }
@@ -160,26 +162,26 @@ function asignarListeners(carta) {
 var intervaloContador;
 
 function iniciarContador(time) {
- $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
- $("#timer").text(time);
- intervaloContador = setInterval(function () {
-    var tiempoDecr = parseInt($("#timer").text());
+    $("#timer").removeClass("poco-tiempo").addClass("buen-tiempo");
+    $("#timer").text(time);
+    intervaloContador = setInterval(function () {
+        var tiempoDecr = parseInt($("#timer").text());
 
-    tiempoDecr = tiempoDecr - 1;
+        tiempoDecr = tiempoDecr - 1;
 
-    if (tiempoDecr === 30) {
-        $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
-    }
-    if (tiempoDecr === 0) {
-        clearInterval(intervaloContador);
-        deleteLife();
-        reloadTimer();
-        return;
-    }
+        if (tiempoDecr === 30) {
+            $("#timer").removeClass("buen-tiempo").addClass("poco-tiempo");
+        }
+        if (tiempoDecr === 0) {
+            clearInterval(intervaloContador);
+            deleteLife();
+            reloadTimer();
+            return;
+        }
 
-    $('#timer').text(tiempoDecr);
+        $('#timer').text(tiempoDecr);
 
-}, 1000);
+    }, 1000);
 }
 
 function stopTime() {
@@ -188,7 +190,7 @@ function stopTime() {
 function reloadTimer() {
     if (vidas === 0) {
         validateLevel();
-    }else{
+    } else {
         iniciarContador(initTime);
     }
 }
@@ -197,10 +199,12 @@ function reloadTimer() {
 function confirmarRespuesta(respuesta, caso) {
     var corResultado = $("#correct_answer");
     var wrongResultado = $("#wrong_answer");
-    var audio = document.getElementById('sound'); /*Modifico alex*/
-    var audio_wrong = document.getElementById('wrong'); /*Modifico Alex*/
-    var audio_good = document.getElementById('good');/*Alex modifico*/
-
+    var audio = document.getElementById('sound');
+    /*Modifico alex*/
+    var audio_wrong = document.getElementById('wrong');
+    /*Modifico Alex*/
+    var audio_good = document.getElementById('good');
+    /*Alex modifico*/
 
 
     $("#pregunta-correctos").hide(500);
@@ -209,7 +213,8 @@ function confirmarRespuesta(respuesta, caso) {
 
         //console.log("Correcto");
         //audio.pause();
-        audio_good.play();/*Alex modifico */
+        audio_good.play();
+        /*Alex modifico */
         corResultado.css("background-color", "lightgreen");
 
 
@@ -220,7 +225,8 @@ function confirmarRespuesta(respuesta, caso) {
     } else {
 
         //audio.pause();
-        audio_wrong.play();/*Alex modifico */
+        audio_wrong.play();
+        /*Alex modifico */
 
         wrongResultado.css("background-color", "#F6CECE");
         wrongResultado.text("Incorrecto");
@@ -228,7 +234,7 @@ function confirmarRespuesta(respuesta, caso) {
         wrongResultado.fadeToggle(4000);
     }
 
-/*****************************************************/
+    /*****************************************************/
     /*
      * Casos:
      * 1-> Respuesta y conceptos iguales: Acertado
@@ -237,21 +243,21 @@ function confirmarRespuesta(respuesta, caso) {
      * 4-> Respuesta y conceptos NO iguales: Acertado
      */
 
-     switch (caso) {
+    switch (caso) {
         case 1:
-        sacarCartas(parejaSeleccionada);
-        break;
+            sacarCartas(parejaSeleccionada);
+            break;
         case 2:
-        ocultarSeleccionados();
-        deleteLife();
-        break;
+            ocultarSeleccionados();
+            deleteLife();
+            break;
         case 3:
-        ocultarSeleccionados();
-        deleteLife();
-        break;
+            ocultarSeleccionados();
+            deleteLife();
+            break;
         case 4:
-        ocultarSeleccionados();
-        break;
+            ocultarSeleccionados();
+            break;
 
 
     }
@@ -269,7 +275,6 @@ function confirmarRespuesta(respuesta, caso) {
 /********************************/
 
 
-
 function ocultarSeleccionados() {
     for (i = 0; i < parejaSeleccionada.length; i++) {
         $(parejaSeleccionada[i]).toggleClass("flipped");
@@ -280,7 +285,7 @@ function ocultarSeleccionados() {
  var puntaje = parseInt($("#puntaje").val());
  puntaje = puntaje + puntos;
  $("#puntaje").val(puntaje);
-}*/
+ }*/
 
 function sacarCartas(parejasSeleccionada) {
     for (var i = 0, max = parejasSeleccionada.length; i < max; i++) {
@@ -358,7 +363,7 @@ function validateLevel() {
     var type = "error";
     var buttonMessage = "Reiniciar";
 
-    if (nivel < 3 && vidas > 0) {
+    if (nivel < 4 && vidas > 0) {
         if (vidas >= 3) {
             isLevelPerfect = true;
         }
@@ -427,7 +432,7 @@ function showAlertExtraLife() {
     });
 }
 
-function showGameOver(){
+function showGameOver() {
     swal({
         title: 'Game Over',
         text: 'Felicidades!! Terminaste el juego',
