@@ -8,6 +8,32 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
+    $( function() {
+        $("#dialog").dialog({
+            autoOpen: false,
+            resizable:false,
+            modal: true,
+            height:600,
+            width:1000,
+            position:{
+                my: "center",
+                at: "center",
+                of: window
+            },
+            show: {
+                effect: "drop",
+                duration: 200
+            },
+            hide: {
+                effect: "fold",
+                duration: 1000
+            }
+        });
+
+        $("#pop-help").on( "click", function() {
+            $("#dialog").dialog("open");
+        });
+    } );
 
 
     vidas = 3;
