@@ -60,7 +60,7 @@ $(document).ready(function () {
 
 var vidas;
 var cartas = [];
-var numParejas = 6;
+var numParejas = 1;
 var nivel = 1;
 var initTime = 200;
 
@@ -460,7 +460,7 @@ function showAlertExtraLife() {
 
 function showGameOver() {
     swal({
-        title: 'Game Over',
+        title: 'Juego Terminado',
         text: 'Felicidades!! Terminaste el juego',
         imageUrl: '../img/trophy.png',
         animation: false,
