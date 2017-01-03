@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
     var currentTime= 0; //modificado alex
@@ -8,6 +9,33 @@ $(document).ready(function () {
     $("#pregunta-correctos").hide();
     asignarListenersPregunta();
     $("#nombre-nivel").text("Nivel " + nivel);
+
+$( function() {
+    $("#dialog").dialog({
+      autoOpen: false,
+      resizable:false,
+      modal: true,
+      height:600,
+      width:1000,
+      position:{
+        my: "center",
+        at: "center",
+        of: window
+      },
+      show: {
+        effect: "drop",
+        duration: 200
+      },
+      hide: {
+        effect: "fold",
+        duration: 1000
+      }
+    });
+ 
+    $("#pop-help").on( "click", function() {
+      $("#dialog").dialog("open");
+    });
+  } );
 
 
     vidas = 3;
@@ -29,6 +57,9 @@ $(document).ready(function () {
     audio_good.onended = function(){
         audio.play();
     }
+
+ 
+
 
 });
 
@@ -192,6 +223,9 @@ function reloadTimer() {
         iniciarContador(initTime);
     }
 }
+
+
+
 
 /*************Copiar y pegar este *************/
 function confirmarRespuesta(respuesta, caso) {

@@ -30,21 +30,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     src: url(../resources/fonts/ReemKufi-Regular.ttf);
 }
 
-@font-face {
-    font-family: Arkanoid;
-    src: url(../resources/fonts/iomanoid.ttf);
-}
+
 
 body {
     font-family: Raleway;
     background: #02ce6c;
+    z-index: 0;
+    
 }
+
 
 @media screen and (min-width: 1300px) {
     p {
         font-size: 1em;
     }
 }
+
 
 @media screen and (min-device-width: 700px) and (max-device-width: 1000px) {
     p {
@@ -128,7 +129,7 @@ body {
     width: 0;
     height: 0;
     left: 100%;
-    top: 140px;
+    top: 95px;
     border: 25px solid;
     border-color: transparent transparent #000000 #000000;
 }
@@ -139,7 +140,7 @@ body {
     width: 0;
     height: 0;
     left: 100%;
-    top: 145px;
+    top: 100px;
     border: 21px solid;
     border-color: transparent transparent #fff #fff;
 }
@@ -291,46 +292,7 @@ footer {
     float: right;
 }
 
-/*************Copiar y pegar****************************/
-#pop {
-    display: none;
-    position: absolute;
-    text-align: center;
-    margin-left: 825px;
-    width: 200px;
 
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
-    box-shadow: 3px 3px 3px black;
-    padding: 10px;
-}
-
-#pop:before {
-    content: ' ';
-    position: absolute;
-    width: 5px;
-    height: 30px;
-    right: 74%;
-    top: 100%;
-    border: 25px solid;
-    border-radius: 50px 50px 80px 35px;
-    border-color: #000 transparent transparent #000;
-    transform: rotateZ(180deg);
-}
-
-#pop:after {
-    content: ' ';
-    position: absolute;
-    width: 5px;
-    height: 30px;
-    right: 74%;
-    top: 100%;
-    border: 21px solid;
-    border-radius: 50px 0 0 0;
-    border-color: #fff transparent transparent #fff;
-    transform: rotateZ(180deg);
-}
 
 #resultado {
     float: right;
@@ -343,12 +305,6 @@ div[tipo="definicion"] h3 {
     background-color: lightyellow;
 
 }
-
-/* THE TRIANGLE
-------------------------------------------------------------------------------------------------------------------------------- */
-
-/*********Modifico ALex 10/12/2016****************/
-
 
 
  #correct_answer{
@@ -445,5 +401,27 @@ div[tipo="definicion"] h3 {
     font-family: Reem;
 }
 
-/***************************/
+
+#pop-help{
+    background-image: url('../img/help.png');
+    height: 64px;
+    width: 64px;
+    border-radius: 50px;
+    position: absolute;
+    left: 90%;
+}
+
+#pop-help:focus{
+    outline: none;
+}
+
+.instrucciones {
+    font-size: 1.7em;
+}
+
+.img-instrucciones {
+    height: 64px;
+    width: 64px;
+    left: 15px;
+}
 
