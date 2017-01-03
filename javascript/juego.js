@@ -72,9 +72,7 @@ var initTime = 250;
     $('.mute').addClass('visible');
     $('.volumeon').addClass('hidden');
     song.volume=0;
-
 })
-
  $('.mute').click(function (e){
     e.preventDefault();
     $('.volumeon').removeClass('hidden');
@@ -82,7 +80,6 @@ var initTime = 250;
     $('.mute').addClass('hidden');
     $('.volumeon').addClass('visible');
     song.volume=1;
-
 })
  ******************************************/
 
@@ -244,7 +241,7 @@ function confirmarRespuesta(respuesta, caso) {
         corResultado.css("background-color", "lightgreen");
 
 
-        corResultado.text("Correcto");
+
         corResultado.fadeToggle(100);
         corResultado.fadeToggle(3000);
 
@@ -255,7 +252,7 @@ function confirmarRespuesta(respuesta, caso) {
         /*Alex modifico */
 
         wrongResultado.css("background-color", "#F6CECE");
-        wrongResultado.text("Incorrecto");
+
         wrongResultado.fadeToggle(2000);
         wrongResultado.fadeToggle(4000);
     }
