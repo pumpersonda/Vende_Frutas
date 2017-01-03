@@ -60,9 +60,9 @@ $(document).ready(function () {
 
 var vidas;
 var cartas = [];
-var numParejas = 1;
+var numParejas = 6;
 var nivel = 1;
-var initTime = 200;
+var initTime = 250;
 
 /*******************ALEX*************
  $('.volumeon').click(function (e){
